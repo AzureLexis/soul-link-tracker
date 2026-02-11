@@ -1,0 +1,97 @@
+<div class="main-content">
+    <h1>Tracker</h1>
+    <div>
+        <div class="inline-block">
+            <mat-form-field>
+                <mat-label>Add new player</mat-label>
+                <input matInput type="text" [(ngModel)]="playerName" (keydown)="playerNameEntered($event)">
+            </mat-form-field>
+        </div>
+        <div class="inline-block cursor-pointer" (click)="addPlayer()">
+            <mat-icon>add</mat-icon>
+        </div>
+
+        <div class="pull-right padding-5">
+            <button mat-raised-button class="margin-h-5 margin-t-5" (click)="openResetDialog()">
+                <mat-icon>refresh</mat-icon>
+                Reset
+            </button>
+            <button mat-raised-button class="margin-h-5 margin-t-5" (click)="saveSession()">
+                <mat-icon>save</mat-icon>
+                Save
+            </button>
+            <button mat-raised-button class="margin-h-5 margin-t-5" (click)="loadSession()">
+                <mat-icon>unarchive</mat-icon>
+                Load
+            </button>
+        </div>
+    </div>
+  
+    <table mat-table class="main-table">
+        <thead>
+          <tr>
+            <th>Location</th>
+            @for (player of playerList; track player.id) {
+              <th class="player-name">
+                <div class="player-name-hover-invisible">
+                    {{ player.name }}
+                </div>
+                <div class="player-name-hover-visible">
+                    <input type="text" value="{{player.name}}" (change)="player.name=$event.target.value"/>
+                </div>
+                <div class="text-top player-name-hover-visible cursor-pointer" (click)="openDeleteDialog(player)">
+                    <mat-icon>delete</mat-icon>
+                </div>
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+        @for (location of locationList; track location.id) {
+            <tr>
+                <td class="min-width-300 text-center {{getLocationClass(location.id)}}">{{ location.name }}</td>
+                @for (player of playerList; track player.id) {
+                    <td>
+                        <div class="inline-block">
+                            <form class="pokemon-select">
+                                <mat-form-field>
+                                <mat-label>Pokemon</mat-label>
+                                <input class="min-width-300" type="text" matInput [formControl]="getControl(location, player)" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+                                (optionSelected)="onPokemonSelected(location, player, $event.option.value)">
+                                    @for (option of getFilteredOptions(location, player) | async; track option.id) {
+                                    <mat-option [value]="option">{{option.name}}</mat-option>
+                                    }
+                                </mat-autocomplete>
+                                </mat-form-field>
+                            </form>
+
+                                <div>
+                                    <div class="half-width text-center inline-block type-{{getPokemonDetails(getPlayerMon(player, location).pokemonId).type1}}">
+                                        {{ getPokemonDetails(getPlayerMon(player, location).pokemonId).type1 }} 
+                                    </div>
+                                    <div class="half-width text-center inline-block type-{{getPokemonDetails(getPlayerMon(player, location).pokemonId).type2}}">
+                                        {{ getPokemonDetails(getPlayerMon(player, location).pokemonId).type2 }}
+                                    </div>
+                                </div>
+                            
+                            @if(location.status !== 'not_visited' && getPlayerMon(player, location)) {
+                                <div class="text-center margin-b-5">
+                                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style"
+                                    (change)="onPokemonStatusSelected(location, player, $event.value)">
+                                        <mat-button-toggle [checked]="getPlayerMon(player, location).status === 'none'" value="none">None</mat-button-toggle>
+                                        <mat-button-toggle [disabled]="!hasPokemonAtLocation(player,location)" [checked]="getPlayerMon(player, location).status === 'missed'" value="missed">Missed</mat-button-toggle>
+                                        <mat-button-toggle [disabled]="!hasPokemonAtLocation(player,location)" [checked]="getPlayerMon(player, location).status === 'caught'" value="caught">Caught</mat-button-toggle>
+                                        <mat-button-toggle [disabled]="!hasPokemonAtLocation(player,location)" [checked]="getPlayerMon(player, location).status === 'fainted'" value="fainted">Fainted</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                </div>
+                            }
+                        </div>
+                    </td>
+                }
+            </tr>
+        }
+        </tbody>
+      </table>
+    
+</div>

@@ -1,3 +1,151 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: gray;
+    color: white;
+}
 
-@import "tailwindcss";
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content {
+    margin: 0% auto;
+}
+
+.main-table {
+    background-color: rgb(101, 122, 139);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgb(56, 56, 56);
+    border-spacing: 0px;
+}
+
+.main-table tr:hover{
+    background-color: rgb(48, 62, 73);
+}
+
+.player-name {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
+    height: 35px;
+}
+
+.pull-right {
+    float: right;
+}
+
+.player-name:hover .player-name-hover-visible { 
+    display: inline-block;
+}
+
+.player-name:hover .player-name-hover-invisible { 
+    display: none;
+}
+
+.player-name-hover-visible { 
+    display: none;
+}
+
+.main-table th {
+    border-bottom: solid white 1px;
+}
+
+.main-table td {
+    border-bottom: solid white 1px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.min-width-400 {
+    min-width: 400px;
+}
+
+.min-width-300 {
+    min-width: 300px;
+}
+
+.padding-5 {
+    padding: 5px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.margin-b-5 {
+    margin: 5px;
+}
+
+.margin-t-5 {
+    margin: 5px;
+}
+
+.margin-h-5 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.active-class {
+    color: #ffd04e;
+}
+
+.missed-class {
+    color: #ffd667;
+}
+
+.fainted-class {
+    color: #ff5a5a;
+}
+
+.caught-class {
+    color: #4eff4e;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-top {
+    vertical-align: top;
+}
+
+.mat-mdc-form-field-type-mat-input {
+    width: 300px;
+    margin: 5px;
+}
+
+div.mat-mdc-form-field-bottom-align {
+    display: none !important;
+}
+
+.mat-button-toggle-group-appearance-standard {
+    border: solid white 1px !important;
+}
+
+.mat-button-toggle-label-content {
+    color: white;
+}
+
+.mat-button-toggle-checked .mat-button-toggle-label-content {
+    color: black;
+}
