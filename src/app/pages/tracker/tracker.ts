@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Location, LocationListProvider } from '../../services/location-list-provider';
+import { Location, LocationListProvider, RegionOption } from '../../services/location-list-provider';
 import { Pokemon, PokemonListProvider } from '../../services/pokemon-list-provider';
 import { AsyncPipe } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -37,20 +37,31 @@ import { ConfirmationDialog } from './confirmation-dialog';
 export class Tracker {
 
   public playerName : string = '';
-  public readonly locationList : Array<LocationStatus> = [];
+  public locationList : Array<LocationStatus> = [];
   public readonly pokemonList : Array<Pokemon> = [];
   public playerList : Array<Player> = [];
   public pokemonControls: { [key: string]: FormControl<string | Pokemon | null> } = {};
-
-  
+  public selectedRegion = 1;
+  public regionList : Array<RegionOption> = [];
+  public regionFormControl : FormControl<RegionOption | null>;
 
   constructor(
     private readonly locationListProvider : LocationListProvider,
     private readonly pokemonListProvider : PokemonListProvider,
     private readonly dialog: MatDialog,
     private readonly cdr: ChangeDetectorRef) {
+      this.pokemonList = this.pokemonListProvider.getPokemonList();
+      this.regionList = this.locationListProvider.getRegions();
+      this.regionFormControl = new FormControl(this.regionList[0]);
+      this.updateRegionList(this.regionFormControl.value);
+      this.playerList = this.playerList;
+  }
 
-      this.locationList = this.locationListProvider.getLocationList().map( location => {
+  public updateRegionList(region : RegionOption | null) {
+    if(region === null){
+      this.locationList = [];
+    }else{
+      this.locationList = this.locationListProvider.getLocationList(region.id).map( location => {
         return {
           'id': location.id,
           'name': location.name,
@@ -58,12 +69,16 @@ export class Tracker {
           'active': false
         } as LocationStatus
       });
-      this.pokemonList = this.pokemonListProvider.getPokemonList();
-      this.playerList = this.playerList;
+    }
+    
   }
 
-  public displayFn(pokemon: Pokemon): string {
+  public displayPokemonFn(pokemon: Pokemon): string {
     return pokemon && pokemon.name ? pokemon.name : '';
+  }
+
+  public displayRegionFn(region: RegionOption): string {
+    return region && region.name ? region.name : '';
   }
 
   public getControl(location: Location, player: Player): FormControl<string | Pokemon | null> {
@@ -78,12 +93,17 @@ export class Tracker {
     return `${location.id}-${player.id}`;
   }
 
-  private _filter(name: string): Pokemon[] {
+  private _filterPokemon(name: string): Pokemon[] {
     const filterValue = name.toLowerCase();
     return this.pokemonList.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
-  public getFilteredOptions(location: Location, player: Player): Observable<Pokemon[]> {
+  private _filterRegion(name: string): RegionOption[] {
+    const filterValue = name.toLowerCase();
+    return this.regionList.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
+
+  public getFilteredPokemonOptions(location: Location, player: Player): Observable<Pokemon[]> {
     const control = this.getControl(location, player);
     return control.valueChanges.pipe(
       startWith(control.value),
@@ -92,7 +112,20 @@ export class Tracker {
           return this.pokemonList.slice(0,10);
         }
         const name = typeof value === 'string' ? value : value?.name;
-        return name ? this._filter(name as string) : this.pokemonList.slice();
+        return name ? this._filterPokemon(name as string) : this.pokemonList.slice();
+      })
+    );
+  }
+
+  public getFilteredRegionOptions(): Observable<RegionOption[]> {
+    return this.regionFormControl.valueChanges.pipe(
+      startWith(this.regionFormControl.value),
+      map(value => {
+        if (!value) {
+          return this.regionList.slice();
+        }
+        const name = typeof value === 'string' ? value : value?.name;
+        return name ? this._filterRegion(name as string) : this.regionList.slice();
       })
     );
   }
@@ -238,7 +271,10 @@ export class Tracker {
   }
 
   public saveSession() {
-    const playerSession = JSON.stringify(this.playerList);
+    const playerSession = JSON.stringify({
+      regionId: this.regionFormControl.value?.id,
+      playerList: this.playerList
+    } as TrackSession);
 
     const blob = new Blob([playerSession], { type: 'application/json' });
     const url = window.URL.createObjectURL(blob);
@@ -266,13 +302,11 @@ export class Tracker {
       reader.onload = () => {
         try {
           const text = reader.result as string;
-          const loadedPlayers = JSON.parse(text) as Player[];
-          if (!Array.isArray(loadedPlayers)) {
-            throw new Error('Invalid session file');
-          }
+          const trackSession = JSON.parse(text) as TrackSession;
 
           this.pokemonControls = {};
-          this.playerList = loadedPlayers;
+          this.playerList = trackSession.playerList;
+          this.regionFormControl.setValue(this.regionList.find(region => region.id === trackSession.regionId) || null);
 
           this.locationList.forEach(location => {
             this.playerList.forEach(player => {
@@ -329,4 +363,9 @@ export interface PokemonStatus {
   pokemonId : number;
   locationId : number;
   status : 'none' |'missed' | 'caught' | 'fainted';
+}
+
+export interface TrackSession {
+  regionId : number,
+  playerList : Array<Player>
 }
