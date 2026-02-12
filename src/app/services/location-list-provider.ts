@@ -9,6 +9,7 @@ export class LocationListProvider {
       id: 1,
       name: 'Unova (Black/White)',
       locations: [
+        { id: 0, name: 'Starters' },
         { id: 1, name: 'Route 1' },
         { id: 2, name: 'Route 2' },
         { id: 3, name: 'Striaton City' },
@@ -63,6 +64,7 @@ export class LocationListProvider {
       id: 2,
       name: 'Heart gold/Soul silver',
       locations: [
+        { id: 0, name: 'Starters' },
         { id: 1, name: 'New Bark Town' },
         { id: 2, name: 'Route 29' },
         { id: 3, name: 'Route 46' },
