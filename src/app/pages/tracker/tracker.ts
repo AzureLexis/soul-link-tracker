@@ -44,6 +44,7 @@ export class Tracker {
   public selectedRegion = 1;
   public regionList : Array<RegionOption> = [];
   public regionFormControl : FormControl<RegionOption | null>;
+  public hideMissedFainted : string= '1';
 
   constructor(
     private readonly locationListProvider : LocationListProvider,
@@ -52,7 +53,7 @@ export class Tracker {
     private readonly cdr: ChangeDetectorRef) {
       this.pokemonList = this.pokemonListProvider.getPokemonList();
       this.regionList = this.locationListProvider.getRegions();
-      this.regionFormControl = new FormControl(this.regionList[0]);
+      this.regionFormControl = new FormControl(null);
       this.updateRegionList(this.regionFormControl.value);
       this.playerList = this.playerList;
   }
