@@ -307,7 +307,19 @@ export class Tracker {
 
           this.pokemonControls = {};
           this.playerList = trackSession.playerList;
-          this.regionFormControl.setValue(this.regionList.find(region => region.id === trackSession.regionId) || null);
+          const region = this.regionList.find(region => region.id === trackSession.regionId) || null;
+          this.regionFormControl.setValue(region);
+
+          if(region !== null){
+            this.locationList = this.locationListProvider.getLocationList(region.id).map( location => {
+              return {
+                'id': location.id,
+                'name': location.name,
+                'status': 'caught',
+                'active': false
+              } as LocationStatus
+            });
+          }
 
           this.locationList.forEach(location => {
             this.playerList.forEach(player => {
@@ -325,6 +337,7 @@ export class Tracker {
               this.pokemonControls[key] = control;
             });
           });
+          console.log(this.locationList);
           this.cdr.detectChanges();
         } catch (e) {
           console.error('Failed to load session', e);
