@@ -141,6 +141,10 @@ body {
     vertical-align: top;
 }
 
+.align-v-middle {
+    vertical-align: middle;
+}
+
 .mat-mdc-form-field-type-mat-input {
     width: 300px;
     margin: 5px;

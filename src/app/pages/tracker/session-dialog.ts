@@ -7,11 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 
 export interface SessionDialogData {
-  title?: string;
-  message?: string;
-  confirmText?: string;
-  cancelText?: string;
-  icon?: string;
+  sessionId: string;
 }
 
 @Component({
@@ -34,7 +30,7 @@ export interface SessionDialogData {
     </div>
     <div mat-dialog-actions align="end">
       <button mat-button (click)="onCancelClick()">
-        {{ data.cancelText || 'Cancel' }}
+        Cancel
       </button>
       <button mat-raised-button color="warn" (click)="onConfirmClick()">
         <mat-icon class="mr-1">connect_without_contact</mat-icon>
@@ -45,12 +41,18 @@ export interface SessionDialogData {
 })
 export class SessionDialog {
 
-  public sessionId = uuidv4();
+  public sessionId : string = '';
 
   constructor(
     public dialogRef: MatDialogRef<SessionDialog>,
     @Inject(MAT_DIALOG_DATA) public data: SessionDialogData,
-  ) {}
+  ) {
+    if(data.sessionId !== ''){
+      this.sessionId = data.sessionId;
+    }else{
+      this.sessionId = uuidv4();
+    }
+  }
 
   public onCancelClick(): void {
     this.dialogRef.close(false);

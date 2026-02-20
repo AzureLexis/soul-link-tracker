@@ -14,8 +14,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationDialog } from './confirmation-dialog';
 import { SessionDialog } from './session-dialog';
-import { webSocket } from 'rxjs/webSocket';
-
+import { Clipboard } from '@angular/cdk/clipboard';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -31,6 +32,7 @@ import { webSocket } from 'rxjs/webSocket';
     MatButtonToggleModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatTooltipModule,
     AsyncPipe,
     FormsModule,
   ],
@@ -66,10 +68,15 @@ export class Tracker {
   public regionFormControl : FormControl<RegionOption | null>;
   public hideMissed : string= '1';
 
+  private websocketIntervalId : number = 0;
+  private websocketSessionId : string = '';
+
   constructor(
     private readonly locationListProvider : LocationListProvider,
     private readonly pokemonListProvider : PokemonListProvider,
     private readonly dialog: MatDialog,
+    private readonly clipboard : Clipboard,
+    private readonly snackbar : MatSnackBar,
     private readonly cdr: ChangeDetectorRef) {
       this.pokemonList = this.pokemonListProvider.getPokemonList();
       this.regionList = this.locationListProvider.getRegions();
@@ -81,25 +88,48 @@ export class Tracker {
   private connectToWesbocket(uuid : string) {
     this.sendStartSessionMessage(uuid);
     this.websocketClient.onopen = () => {
-      console.log('Websocket connected');
       this.websocketConnected = true;
+      
     }
     this.websocketClient.onmessage = (event : MessageEvent<string>) => {
       this.websocketConnected = true;
       this.receiveWebsocketMessages(event.data);
+      if(this.websocketIntervalId === 0){
+        this.websocketIntervalId = setInterval(() => {
+          this.sendWebsocketMessages({'type':'ping'});
+        }, 5000);
+      }
+      this.cdr.detectChanges();
     }
     this.websocketClient.onerror = () => {
       console.log('Websocket closed with error');
       this.websocketSessionHost = false;
       this.websocketConnected = false;
+      clearInterval(this.websocketIntervalId);
+      this.websocketIntervalId = 0;
+      this.cdr.detectChanges();
     }
     this.websocketClient.onclose = () => {
-      console.log('Websocket closed');
+      console.log('Websocket closed2');
       this.websocketSessionHost = false;
       this.websocketConnected = false;
+      clearInterval(this.websocketIntervalId);
+      this.websocketIntervalId = 0;
+      this.snackbar.open('You have been disconnected from the session.', 'Ok', {
+        duration: 5000,
+        panelClass: ['error-snackbar'],
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      });
+      this.cdr.detectChanges();
     }
+    
   }
   
+  public copySessionIdToClipboard() {
+    this.clipboard.copy(this.websocketSessionId);
+  }
+
 
   public updateRegionList(region : RegionOption | null) {
     if(region === null){
@@ -302,12 +332,14 @@ export class Tracker {
   public openConnectSessionDialog() {
     const dialogRef = this.dialog.open(SessionDialog, {
       data: {
+        'sessionId': this.websocketSessionId
       },
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result !== false){
         this.connectToWesbocket(result);
+        this.websocketSessionId = result;
       }
     });
   }
@@ -426,7 +458,7 @@ export class Tracker {
   }
 
   public receiveWebsocketMessages(msg : string) {
-    let decodedMessage;
+    let decodedMessage;console.log(msg);
     if(msg != 'pong'){
       decodedMessage = JSON.parse(msg);
     }else{

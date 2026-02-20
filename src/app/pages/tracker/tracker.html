@@ -37,12 +37,12 @@
                     Connect to session
                 </button>
             }
-
             @if(websocketConnected) {
                 <button mat-raised-button class="margin-h-5 margin-t-5" (click)="sendSyncRequest()">
                     <mat-icon>sync_alt</mat-icon>
                     Sync session
                 </button>
+                <mat-icon #tooltip="matTooltip" matTooltip="Copy session Id" class="cursor-pointer margin-h-5 align-v-middle" (click)="copySessionIdToClipboard()">file_copy</mat-icon>
             }
         </div>
     </div>
