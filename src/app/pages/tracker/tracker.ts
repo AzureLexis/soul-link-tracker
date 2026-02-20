@@ -54,7 +54,7 @@ export class Tracker {
   private websocketMessageTypechangePokemonStatus = 'changePokemonStatus';
   private websocketMessageTypePong = 'pong';
 
-  private websocketClient : any = new WebSocket('https://soul-link-tracker-websocket.onrender.com');
+  private websocketClient : any = null;
   public websocketConnected = false;
   private websocketSessionHost = false;
 
@@ -86,6 +86,7 @@ export class Tracker {
   }
 
   private connectToWesbocket(uuid : string) {
+    this.websocketClient = new WebSocket('https://soul-link-tracker-websocket.onrender.com');
     this.sendStartSessionMessage(uuid);
     this.websocketClient.onopen = () => {
       this.websocketConnected = true;
@@ -107,20 +108,30 @@ export class Tracker {
       this.websocketConnected = false;
       clearInterval(this.websocketIntervalId);
       this.websocketIntervalId = 0;
+      setTimeout(() => {
+        if(!this.websocketConnected){
+          this.connectToWesbocket(uuid);
+        }
+      }, 5000);
       this.cdr.detectChanges();
     }
     this.websocketClient.onclose = () => {
-      console.log('Websocket closed2');
+      console.log('Websocket closed');
       this.websocketSessionHost = false;
       this.websocketConnected = false;
       clearInterval(this.websocketIntervalId);
       this.websocketIntervalId = 0;
-      this.snackbar.open('You have been disconnected from the session.', 'Ok', {
+      this.snackbar.open('You have been disconnected from the session, reconnecting after 5 seconds.', 'Ok', {
         duration: 5000,
         panelClass: ['error-snackbar'],
         horizontalPosition: 'right',
         verticalPosition: 'top'
       });
+      setTimeout(() => {
+        if(!this.websocketConnected){
+          this.connectToWesbocket(uuid);
+        }
+      }, 5000);
       this.cdr.detectChanges();
     }
     
@@ -636,7 +647,7 @@ export class Tracker {
 
   public sendWebsocketMessages(msg : object) {
     const codedMessage = JSON.stringify(msg);
-    this.websocketClient.send(codedMessage);
+    this.websocketClient?.send(codedMessage);
   }
 }
 
