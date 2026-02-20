@@ -30,6 +30,20 @@
                 <mat-icon>unarchive</mat-icon>
                 Load
             </button>
+
+            @if(!websocketConnected){
+                <button mat-raised-button class="margin-h-5 margin-t-5" (click)="openConnectSessionDialog()">
+                    <mat-icon>connect_without_contact</mat-icon>
+                    Connect to session
+                </button>
+            }
+
+            @if(websocketConnected) {
+                <button mat-raised-button class="margin-h-5 margin-t-5" (click)="sendSyncRequest()">
+                    <mat-icon>sync_alt</mat-icon>
+                    Sync session
+                </button>
+            }
         </div>
     </div>
   
@@ -54,7 +68,7 @@
                     {{ player.name }}
                 </div>
                 <div class="player-name-hover-visible">
-                    <input type="text" value="{{player.name}}" (change)="player.name=$event.target.value"/>
+                    <input type="text" value="{{player.name}}" (change)="player.name=$event.target.value;sendRenamePlayerMessage(player.id, $event.target.value)"/>
                 </div>
                 <div class="text-top player-name-hover-visible cursor-pointer" (click)="openDeleteDialog(player)">
                     <mat-icon>delete</mat-icon>
