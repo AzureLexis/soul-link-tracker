@@ -326,7 +326,6 @@ export class Tracker {
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
         this.pokemonControls = {};
-        this.playerList = [];
         this.cdr.detectChanges();
         this.sendResetSessionMessage();
       }
@@ -453,7 +452,6 @@ export class Tracker {
         break;
       case this.websocketMessageTypeResetSession:
         this.pokemonControls = {};
-        this.playerList = [];
         this.cdr.detectChanges();
         break;
       case this.websocketMessageTypeAddPlayer:
