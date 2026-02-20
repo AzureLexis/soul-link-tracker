@@ -12,11 +12,11 @@
         </div>
 
         <div class="pull-right padding-5">
-            Hide missed/fainted
+            Hide missed
             <mat-button-toggle-group name="fontStyle" aria-label="Font Style"
-            (change)="hideMissedFainted = $event.value">
-                <mat-button-toggle [checked]="hideMissedFainted === '1'" value="1">Yes</mat-button-toggle>
-                <mat-button-toggle [checked]="hideMissedFainted === '0'" value="0">No</mat-button-toggle>
+            (change)="hideMissed = $event.value">
+                <mat-button-toggle [checked]="hideMissed === '1'" value="1">Yes</mat-button-toggle>
+                <mat-button-toggle [checked]="hideMissed === '0'" value="0">No</mat-button-toggle>
             </mat-button-toggle-group>
             <button mat-raised-button class="margin-h-5 margin-t-5" (click)="openResetDialog()">
                 <mat-icon>refresh</mat-icon>
@@ -79,7 +79,7 @@
         </thead>
         <tbody>
         @for (location of locationList; track location.id) {
-            <tr class="{{hideMissedFainted === '1' ? 'hide-missed-fainted': ''}}">
+            <tr class="{{hideMissed === '1' ? 'hide-missed': ''}}">
                 <td class="min-width-300 text-center {{getLocationClass(location.id)}}">{{ location.name }}</td>
                 @for (player of playerList; track player.id) {
                     <td>

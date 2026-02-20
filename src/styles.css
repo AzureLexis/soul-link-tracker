@@ -109,7 +109,7 @@ body {
     margin-right: 5px;
 }
 
-.hide-missed-fainted:has(> td.fainted-class), .hide-missed-fainted:has(> td.missed-class) {
+.hide-missed:has(> td.missed-class) {
     display: none;
 }
 

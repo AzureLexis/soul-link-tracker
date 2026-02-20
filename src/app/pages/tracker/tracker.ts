@@ -64,7 +64,7 @@ export class Tracker {
   public selectedRegion = 1;
   public regionList : Array<RegionOption> = [];
   public regionFormControl : FormControl<RegionOption | null>;
-  public hideMissedFainted : string= '1';
+  public hideMissed : string= '1';
 
   constructor(
     private readonly locationListProvider : LocationListProvider,
