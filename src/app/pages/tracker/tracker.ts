@@ -87,7 +87,10 @@ export class Tracker {
 
   private connectToWesbocket(uuid : string) {
     this.websocketClient = new WebSocket('https://soul-link-tracker-websocket.onrender.com');
-    this.sendStartSessionMessage(uuid);
+    setTimeout(() => {
+      this.sendStartSessionMessage(uuid);
+    }, 1000);
+    
     this.websocketClient.onopen = () => {
       this.websocketConnected = true;
       
