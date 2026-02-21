@@ -70,6 +70,9 @@ export class Tracker {
 
   private websocketIntervalId : number = 0;
   private websocketSessionId : string = '';
+  private websocketMessageQueue : Array<string> = [];
+  public websocketReconnecting = false;
+  private attemptCounter = 1;
 
   constructor(
     private readonly locationListProvider : LocationListProvider,
@@ -96,48 +99,57 @@ export class Tracker {
       
     }
     this.websocketClient.onmessage = (event : MessageEvent<string>) => {
+      if(this.websocketReconnecting){
+        this.snackbar.open('Reconnected to session', 'Ok', {
+          duration: 3000,
+          panelClass: ['success-snackbar'],
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
+      }
+      this.websocketReconnecting = false;
       this.websocketConnected = true;
+      this.attemptCounter = 1;
       this.receiveWebsocketMessages(event.data);
       if(this.websocketIntervalId === 0){
         this.websocketIntervalId = setInterval(() => {
           this.sendWebsocketMessages({'type':'ping'});
-        }, 5000);
+        }, 30000);
       }
       this.cdr.detectChanges();
     }
-    this.websocketClient.onerror = () => {
+    this.websocketClient.onerror = (e : any) => {
+      console.log('Websocket closed', e.code, e.reason );
       console.log('Websocket closed with error');
-      this.websocketSessionHost = false;
-      this.websocketConnected = false;
-      clearInterval(this.websocketIntervalId);
-      this.websocketIntervalId = 0;
-      setTimeout(() => {
-        if(!this.websocketConnected){
-          this.connectToWesbocket(uuid);
-        }
-      }, 5000);
-      this.cdr.detectChanges();
     }
-    this.websocketClient.onclose = () => {
-      console.log('Websocket closed');
-      this.websocketSessionHost = false;
-      this.websocketConnected = false;
-      clearInterval(this.websocketIntervalId);
-      this.websocketIntervalId = 0;
-      this.snackbar.open('You have been disconnected from the session, reconnecting after 5 seconds.', 'Ok', {
-        duration: 5000,
-        panelClass: ['error-snackbar'],
-        horizontalPosition: 'right',
-        verticalPosition: 'top'
-      });
-      setTimeout(() => {
-        if(!this.websocketConnected){
-          this.connectToWesbocket(uuid);
-        }
-      }, 5000);
-      this.cdr.detectChanges();
+    this.websocketClient.onclose = (e : any) => {
+      console.log('Websocket closed', e.code, e.reason );
+      this.handleWesocketConnectionClose(e, uuid);
     }
-    
+    this.cdr.detectChanges();
+  }
+
+  private handleWesocketConnectionClose(e : any, uuid : string) {
+    this.websocketSessionHost = false;
+    this.websocketConnected = false;
+    this.websocketReconnecting = true;
+    clearInterval(this.websocketIntervalId);
+    this.websocketIntervalId = 0;
+    this.snackbar.open('You have been disconnected from the session, reconnecting in 3 seconds (attempt #'+this.attemptCounter+').', 'Ok', {
+      duration: 3000,
+      panelClass: ['error-snackbar'],
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
+    this.attemptCounter++;
+    setTimeout(() => {
+      if(!this.websocketConnected){
+        this.connectToWesbocket(uuid);
+        
+        this.cdr.detectChanges();
+      }
+    }, 3000);
+    this.cdr.detectChanges();
   }
   
   public copySessionIdToClipboard() {
@@ -657,7 +669,15 @@ export class Tracker {
 
   public sendWebsocketMessages(msg : object) {
     const codedMessage = JSON.stringify(msg);
-    this.websocketClient?.send(codedMessage);
+    if(this.websocketClient !== null && this.websocketClient.readyState === WebSocket.OPEN){
+      this.websocketMessageQueue.forEach(queuedMessage => {
+          this.websocketClient?.send(queuedMessage);  
+      });
+      this.websocketMessageQueue = [];
+      this.websocketClient?.send(codedMessage);
+    }else{
+      this.websocketMessageQueue.push(codedMessage);
+    }
   }
 }
 

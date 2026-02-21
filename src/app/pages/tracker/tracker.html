@@ -33,8 +33,18 @@
 
             @if(!websocketConnected){
                 <button mat-raised-button class="margin-h-5 margin-t-5" (click)="openConnectSessionDialog()">
-                    <mat-icon>connect_without_contact</mat-icon>
-                    Connect to session
+                    @if(this.websocketReconnecting) {
+                        <mat-icon class="spin">refresh</mat-icon>
+                    } @else {
+                        <mat-icon>connect_without_contact</mat-icon>
+                    }
+                    @if(this.websocketReconnecting) {
+                        Reconnecting
+                    } @else {
+                        Connect to session
+                    }
+                    
+                    
                 </button>
             }
             @if(websocketConnected) {
@@ -50,10 +60,10 @@
     <table mat-table class="main-table">
         <thead>
           <tr>
-            <th>
+            <th class="min-width-200">
                 <mat-form-field>
                     <mat-label>Region</mat-label>
-                    <input class="min-width-300" type="text" matInput [formControl]="regionFormControl" [matAutocomplete]="auto">
+                    <input class="min-width-200" type="text" matInput [formControl]="regionFormControl" [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayRegionFn"
                     (optionSelected)="updateRegionList($event.option.value)">
                         @for (option of getFilteredRegionOptions() | async; track option.id) {
@@ -80,7 +90,7 @@
         <tbody>
         @for (location of locationList; track location.id) {
             <tr class="{{hideMissed === '1' ? 'hide-missed': ''}}">
-                <td class="min-width-300 text-center {{getLocationClass(location.id)}}">{{ location.name }}</td>
+                <td class="min-width-200 text-center {{getLocationClass(location.id)}}">{{ location.name }}</td>
                 @for (player of playerList; track player.id) {
                     <td>
                         <div class="inline-block">

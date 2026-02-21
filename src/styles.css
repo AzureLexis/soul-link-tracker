@@ -88,6 +88,10 @@ body {
     min-width: 300px;
 }
 
+.min-width-200 {
+    min-width: 200px;
+}
+
 .padding-5 {
     padding: 5px;
 }
@@ -145,6 +149,11 @@ body {
     vertical-align: middle;
 }
 
+.min-width-200 .mat-mdc-form-field-type-mat-input {
+    width: 200px;
+    margin: 5px;
+}
+
 .mat-mdc-form-field-type-mat-input {
     width: 300px;
     margin: 5px;
@@ -164,4 +173,31 @@ div.mat-mdc-form-field-bottom-align {
 
 .mat-button-toggle-checked .mat-button-toggle-label-content {
     color: black;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.spin {
+    animation: spin 4s infinite linear;
+}
+
+.error-snackbar .mat-mdc-snackbar-surface {
+    background-color: #953a3a !important;
+    color: white !important;
+}
+
+.success-snackbar > .mat-mdc-snackbar-surface {
+    background-color: green !important;
+    color: white !important;
 }
