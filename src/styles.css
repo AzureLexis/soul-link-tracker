@@ -201,3 +201,9 @@ div.mat-mdc-form-field-bottom-align {
     background-color: green !important;
     color: white !important;
 }
+
+.player-stats {
+    font-size: 14px;
+    font-weight: normal;
+    color: #ff5a5a;
+}

@@ -83,6 +83,9 @@
                 <div class="text-top player-name-hover-visible cursor-pointer" (click)="openDeleteDialog(player)">
                     <mat-icon>delete</mat-icon>
                 </div>
+                <div class="player-stats">
+                    Fainted:{{getFaintedNumber(player.id)}}
+                </div>
               </th>
             }
           </tr>

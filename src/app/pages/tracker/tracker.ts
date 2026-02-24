@@ -88,6 +88,11 @@ export class Tracker {
       this.playerList = this.playerList;
   }
 
+  public getFaintedNumber(id : number) {
+    let pokemonList = this.playerList.find(player => player.id === id)?.pokemons.filter( pokemon => pokemon.status === 'fainted');
+    return pokemonList?.length ?? 0;
+  }
+
   private connectToWesbocket(uuid : string) {
     this.websocketClient = new WebSocket('https://soul-link-tracker-websocket.onrender.com');
     setTimeout(() => {
