@@ -14,7 +14,7 @@ export class LocationListProvider {
         { id: 2, name: 'Route 2' },
         { id: 3, name: 'Striaton City' },
         { id: 4, name: 'Dreamyard' },
-        { id: 444, name: 'Dreamyard egg' },
+        { id: 444, name: 'Dreamyard gift' },
         { id: 5, name: 'Route 3' },
         { id: 6, name: 'Wellspring Cave' },
         { id: 7, name: 'Nacrene City' },
