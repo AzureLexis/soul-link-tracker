@@ -170,7 +170,7 @@ export class Tracker {
     let control = this.getControl(location, player);
     if(typeof control !== undefined && typeof control.value !== 'undefined' && control.value !== null && typeof control.value.name !== 'undefined' && this.selectedGen !== null) {
       result = this.movesUrl.replace('{gen}', this.selectedGen.toString()).replace('{id}', this.getCleanPokemonName(control.value.name.toString()));
-    }console.log(result);
+    }
     return result;
   }
 
@@ -514,7 +514,8 @@ export class Tracker {
   }
 
   public receiveWebsocketMessages(msg : string) {
-    let decodedMessage;console.log(msg);
+    let decodedMessage;
+    console.log(msg);
     if(msg != 'pong'){
       decodedMessage = JSON.parse(msg);
     }else{
