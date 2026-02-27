@@ -7,6 +7,7 @@ export class LocationListProvider {
   private readonly locationList : Array<Region> = [
     { 
       id: 1,
+      gen: 5,
       name: 'Unova (Black/White)',
       locations: [
         { id: 0, name: 'Starters' },
@@ -65,6 +66,7 @@ export class LocationListProvider {
     },
     {
       id: 2,
+      gen: 4,
       name: 'Heart gold/Soul silver',
       locations: [
         { id: 0, name: 'Starters' },
@@ -169,6 +171,7 @@ export class LocationListProvider {
     return this.locationList.map( region => {
       return {
         id: region.id,
+        gen: region.gen,
         name: region.name
       } as RegionOption
     });
@@ -182,6 +185,7 @@ export class LocationListProvider {
 export interface RegionOption {
   id: number,
   name: string,
+  gen: number,
   locations: Array<Location>
 }
 

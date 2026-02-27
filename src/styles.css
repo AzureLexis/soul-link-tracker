@@ -76,6 +76,14 @@ body {
     width: 50%;
 }
 
+.width-85 {
+    width: 85%;
+}
+
+.width-10 {
+    width: 10%;
+}
+
 .inline-block {
     display: inline-block;
 }
@@ -206,4 +214,8 @@ div.mat-mdc-form-field-bottom-align {
     font-size: 14px;
     font-weight: normal;
     color: #ff5a5a;
+}
+
+.moveset-link:active,.moveset-link:hover,.moveset-link:visited,.moveset-link:link {
+    color: white;
 }

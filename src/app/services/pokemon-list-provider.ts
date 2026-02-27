@@ -2924,7 +2924,7 @@ export class PokemonListProvider {
     },
     {
       "id": 487,
-      "name": "Giratina Altered",
+      "name": "Giratina",
       "type1": "Ghost",
       "type2": "Dragon"
     },
@@ -2954,7 +2954,7 @@ export class PokemonListProvider {
     },
     {
       "id": 492,
-      "name": "Shaymin Land",
+      "name": "Shaymin",
       "type1": "Grass",
       "type2": ""
     },
@@ -3302,7 +3302,7 @@ export class PokemonListProvider {
     },
     {
       "id": 550,
-      "name": "Basculin Red Striped",
+      "name": "Basculin",
       "type1": "Water",
       "type2": ""
     },
@@ -3332,7 +3332,7 @@ export class PokemonListProvider {
     },
     {
       "id": 555,
-      "name": "Darmanitan Standard",
+      "name": "Darmanitan",
       "type1": "Fire",
       "type2": ""
     },
@@ -3848,13 +3848,13 @@ export class PokemonListProvider {
     },
     {
       "id": 641,
-      "name": "Tornadus Incarnate",
+      "name": "Tornadus",
       "type1": "Flying",
       "type2": ""
     },
     {
       "id": 642,
-      "name": "Thundurus Incarnate",
+      "name": "Thundurus",
       "type1": "Electric",
       "type2": "Flying"
     },
@@ -3872,7 +3872,7 @@ export class PokemonListProvider {
     },
     {
       "id": 645,
-      "name": "Landorus Incarnate",
+      "name": "Landorus",
       "type1": "Ground",
       "type2": "Flying"
     },
@@ -3884,13 +3884,13 @@ export class PokemonListProvider {
     },
     {
       "id": 647,
-      "name": "Keldeo Ordinary",
+      "name": "Keldeo",
       "type1": "Water",
       "type2": "Fighting"
     },
     {
       "id": 648,
-      "name": "Meloetta Aria",
+      "name": "Meloetta",
       "type1": "Normal",
       "type2": "Psychic"
     },
@@ -4070,7 +4070,7 @@ export class PokemonListProvider {
     },
     {
       "id": 678,
-      "name": "Meowstic Male",
+      "name": "Meowstic",
       "type1": "Psychic",
       "type2": ""
     },
@@ -4088,7 +4088,7 @@ export class PokemonListProvider {
     },
     {
       "id": 681,
-      "name": "Aegislash Shield",
+      "name": "Aegislash",
       "type1": "Steel",
       "type2": "Ghost"
     },
@@ -4262,13 +4262,13 @@ export class PokemonListProvider {
     },
     {
       "id": 710,
-      "name": "Pumpkaboo Average",
+      "name": "Pumpkaboo",
       "type1": "Ghost",
       "type2": "Grass"
     },
     {
       "id": 711,
-      "name": "Gourgeist Average",
+      "name": "Gourgeist",
       "type1": "Ghost",
       "type2": "Grass"
     },
@@ -4310,7 +4310,7 @@ export class PokemonListProvider {
     },
     {
       "id": 718,
-      "name": "Zygarde 50",
+      "name": "Zygarde",
       "type1": "Dragon",
       "type2": "Ground"
     },
@@ -4472,13 +4472,13 @@ export class PokemonListProvider {
     },
     {
       "id": 745,
-      "name": "Lycanroc Midday",
+      "name": "Lycanroc",
       "type1": "Rock",
       "type2": ""
     },
     {
       "id": 746,
-      "name": "Wishiwashi Solo",
+      "name": "Wishiwashi",
       "type1": "Water",
       "type2": ""
     },
@@ -4646,7 +4646,7 @@ export class PokemonListProvider {
     },
     {
       "id": 774,
-      "name": "Minior Red Meteor",
+      "name": "Minior",
       "type1": "Rock",
       "type2": "Flying"
     },
@@ -4670,7 +4670,7 @@ export class PokemonListProvider {
     },
     {
       "id": 778,
-      "name": "Mimikyu Disguised",
+      "name": "Mimikyu",
       "type1": "Ghost",
       "type2": "Fairy"
     },
@@ -5096,7 +5096,7 @@ export class PokemonListProvider {
     },
     {
       "id": 849,
-      "name": "Toxtricity Amped",
+      "name": "Toxtricity",
       "type1": "Electric",
       "type2": "Poison"
     },
@@ -5252,19 +5252,19 @@ export class PokemonListProvider {
     },
     {
       "id": 875,
-      "name": "Eiscue Ice",
+      "name": "Eiscue",
       "type1": "Ice",
       "type2": ""
     },
     {
       "id": 876,
-      "name": "Indeedee Male",
+      "name": "Indeedee",
       "type1": "Psychic",
       "type2": "Normal"
     },
     {
       "id": 877,
-      "name": "Morpeko Full Belly",
+      "name": "Morpeko",
       "type1": "Electric",
       "type2": "Dark"
     },
@@ -5354,7 +5354,7 @@ export class PokemonListProvider {
     },
     {
       "id": 892,
-      "name": "Urshifu Single Strike",
+      "name": "Urshifu",
       "type1": "Fighting",
       "type2": "Dark"
     },

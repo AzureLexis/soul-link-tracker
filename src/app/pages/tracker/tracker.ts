@@ -41,6 +41,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class Tracker {
 
+  private movesUrl = 'https://pokemondb.net/pokedex/{id}/moves/{gen}#tab-moves-11';
+
+
   private websocketMessageTypeSetHost = 'setHost';
   private websocketMessageTypeSyncRequest = 'syncRequest';
   private websocketMessageTypeStartSession = 'startSession';
@@ -59,10 +62,11 @@ export class Tracker {
   private websocketSessionHost = false;
 
   public playerName : string = '';
+  public selectedGen : number | null = null;
   public locationList : Array<LocationStatus> = [];
   public readonly pokemonList : Array<Pokemon> = [];
   public playerList : Array<Player> = [];
-  public pokemonControls: { [key: string]: FormControl<string | Pokemon | null> } = {};
+  public pokemonControls: { [key: string]: FormControl<Pokemon | null> } = {};
   public selectedRegion = 1;
   public regionList : Array<RegionOption> = [];
   public regionFormControl : FormControl<RegionOption | null>;
@@ -161,10 +165,23 @@ export class Tracker {
     this.clipboard.copy(this.websocketSessionId);
   }
 
+  public getPokemonMovesetUrl(location : Location, player : Player) : string {
+    let result = '';
+    let control = this.getControl(location, player);
+    if(typeof control !== undefined && typeof control.value !== 'undefined' && control.value !== null && typeof control.value.name !== 'undefined' && this.selectedGen !== null) {
+      result = this.movesUrl.replace('{gen}', this.selectedGen.toString()).replace('{id}', this.getCleanPokemonName(control.value.name.toString()));
+    }console.log(result);
+    return result;
+  }
+
+  public getCleanPokemonName(name : string) : string {
+    return name.replace('.','').replace('\'','').replace(' ','-').toLowerCase();
+  }
 
   public updateRegionList(region : RegionOption | null) {
     if(region === null){
       this.locationList = [];
+      this.selectedGen = null;
     }else{
       this.locationList = this.locationListProvider.getLocationList(region.id).map( location => {
         return {
@@ -174,9 +191,9 @@ export class Tracker {
           'active': false
         } as LocationStatus
       });
+      this.selectedGen = region.gen;
       this.sendChangeRegionMessage(region.id);
     }
-    
   }
 
   public displayPokemonFn(pokemon: Pokemon): string {
@@ -187,10 +204,10 @@ export class Tracker {
     return region && region.name ? region.name : '';
   }
 
-  public getControl(location: Location, player: Player): FormControl<string | Pokemon | null> {
+  public getControl(location: Location, player: Player): FormControl<Pokemon | null> {
     const key = this.getCellKey(location, player);
     if (!this.pokemonControls[key]) {
-      this.pokemonControls[key] = new FormControl<string | Pokemon | null>('');
+      this.pokemonControls[key] = new FormControl<Pokemon | null>(null);
     }
     return this.pokemonControls[key];
   }
@@ -432,6 +449,10 @@ export class Tracker {
         try {
           const text = reader.result as string;
           const trackSession = JSON.parse(text) as TrackSession;
+          let gen = this.locationListProvider.getRegions().find(region => region.id==trackSession.regionId)?.gen;
+          if(typeof gen !== 'undefined'){
+            this.selectedGen = gen;
+          }
           this.restoreSession(trackSession);
           this.sendLoadSessionMessage();
           
@@ -466,7 +487,7 @@ export class Tracker {
     this.locationList.forEach(location => {
       this.playerList.forEach(player => {
         const key = this.getCellKey(location, player);
-        const control = new FormControl<string | Pokemon | null>('');
+        const control = new FormControl<Pokemon | null>(null);
 
         const pokemonStatus = player.pokemons.find(p => p.locationId === location.id);
         if (pokemonStatus) {

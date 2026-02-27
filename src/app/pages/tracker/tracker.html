@@ -109,13 +109,23 @@
                                 </mat-autocomplete>
                                 </mat-form-field>
                             </form>
-
                                 <div>
-                                    <div class="half-width text-center inline-block type-{{getPokemonDetails(getPlayerMon(player, location).pokemonId).type1}}">
-                                        {{ getPokemonDetails(getPlayerMon(player, location).pokemonId).type1 }} 
+                                    <div class="width-10 inline-block align-v-middle">
+                                        @if (getPokemonMovesetUrl(location, player) !== '') {
+                                        <a class="moveset-link" href="{{getPokemonMovesetUrl(location, player)}}" target="_blank" #tooltip="matTooltip" matTooltip="Open moveset">
+                                            <mat-icon>
+                                                gamepad_circle_right
+                                            </mat-icon>
+                                        </a>
+                                        }
                                     </div>
-                                    <div class="half-width text-center inline-block type-{{getPokemonDetails(getPlayerMon(player, location).pokemonId).type2}}">
-                                        {{ getPokemonDetails(getPlayerMon(player, location).pokemonId).type2 }}
+                                    <div class="width-85 inline-block">
+                                        <div class="half-width text-center inline-block type-{{getPokemonDetails(getPlayerMon(player, location).pokemonId).type1}}">
+                                            {{ getPokemonDetails(getPlayerMon(player, location).pokemonId).type1 }} 
+                                        </div>
+                                        <div class="half-width text-center inline-block type-{{getPokemonDetails(getPlayerMon(player, location).pokemonId).type2}}">
+                                            {{ getPokemonDetails(getPlayerMon(player, location).pokemonId).type2 }}
+                                        </div>
                                     </div>
                                 </div>
                             
