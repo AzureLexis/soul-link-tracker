@@ -61,7 +61,18 @@ export class LocationListProvider {
         { id: 45, name: 'White Forest' },
         { id: 46, name: 'Route 15' },
         { id: 47, name: 'Marvelous Bridge' },
-        { id: 48, name: 'Challenger\'s Cave' }
+        { id: 48, name: 'Challenger\'s Cave' },
+
+        { id: 7001, name: 'Extra 1'},
+        { id: 7002, name: 'Extra 2'},
+        { id: 7003, name: 'Extra 3'},
+        { id: 7004, name: 'Extra 4'},
+        { id: 7005, name: 'Extra 5'},
+        { id: 7006, name: 'Extra 6'},
+        { id: 7007, name: 'Extra 7'},
+        { id: 7008, name: 'Extra 8'},
+        { id: 7009, name: 'Extra 9'},
+        { id: 7010, name: 'Extra 10'},
       ]
     },
     {
@@ -162,7 +173,19 @@ export class LocationListProvider {
         { id: 90, name: 'Route 19' },
         { id: 91, name: 'Route 22' },
         { id: 92, name: 'Route 28' },
-        { id: 93, name: 'Mt. Silver' }
+        { id: 93, name: 'Mt. Silver' },
+
+
+        { id: 7001, name: 'Extra 1'},
+        { id: 7002, name: 'Extra 2'},
+        { id: 7003, name: 'Extra 3'},
+        { id: 7004, name: 'Extra 4'},
+        { id: 7005, name: 'Extra 5'},
+        { id: 7006, name: 'Extra 6'},
+        { id: 7007, name: 'Extra 7'},
+        { id: 7008, name: 'Extra 8'},
+        { id: 7009, name: 'Extra 9'},
+        { id: 7010, name: 'Extra 10'},
       ]
     }
   ];

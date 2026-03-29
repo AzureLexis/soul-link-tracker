@@ -25,11 +25,11 @@ body {
     background-color: rgb(48, 62, 73);
 }
 
-.main-table tr:nth-child(2n){
+.main-table tr:nth-child(2n of :not(.hide-missed:has(> td.missed-class))){
     background-color: rgb(82, 99, 112);
 }
 
-.main-table tr:hover:nth-child(2n){
+.main-table tr:hover:nth-child(2n of :not(.hide-missed:has(> td.missed-class))){
     background-color: rgb(23, 33, 41);
 }
 
@@ -219,3 +219,9 @@ div.mat-mdc-form-field-bottom-align {
 .moveset-link:active,.moveset-link:hover,.moveset-link:visited,.moveset-link:link {
     color: white;
 }
+
+.active-location > td {
+    background-color: #0b1845;
+    border-bottom: solid 3px #0eb825;
+}
+

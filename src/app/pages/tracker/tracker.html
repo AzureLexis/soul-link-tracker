@@ -92,8 +92,18 @@
         </thead>
         <tbody>
         @for (location of locationList; track location.id) {
-            <tr class="{{hideMissed === '1' ? 'hide-missed': ''}}">
-                <td class="min-width-200 text-center {{getLocationClass(location.id)}}">{{ location.name }}</td>
+            <tr class="{{hideMissed === '1' ? 'hide-missed': ''}} {{location.active ? 'active-location': ''}}">
+                <td class="min-width-200 text-center {{getLocationClass(location.id)}}">
+                    {{ location.name }}
+                    <div>
+                        @if(location.active) {
+                            <mat-icon class="cursor-pointer" (click)="toggleLocationActive(location, false)" #tooltip="matTooltip" matTooltip="In party">group</mat-icon>
+                        }
+                        @else {
+                            <mat-icon class="cursor-pointer" (click)="toggleLocationActive(location, true)" #tooltip="matTooltip" matTooltip="Inactive">computer</mat-icon>
+                        }
+                    </div>
+                </td>
                 @for (player of playerList; track player.id) {
                     <td>
                         <div class="inline-block">

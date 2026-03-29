@@ -53,6 +53,7 @@ export class Tracker {
   private websocketMessageTypeRemovePlayer = 'removePlayer';
   private websocketMessageTypeRenamePlayer = 'renamePlayer';
   private websocketMessageTypeChangeRegion = 'changeRegion';
+  private websocketMessageTypeChangeLocationActive = 'changeLocationActive';
   private websocketMessageTypeCatchPokemon = 'catchPokemon';
   private websocketMessageTypechangePokemonStatus = 'changePokemonStatus';
   private websocketMessageTypePong = 'pong';
@@ -194,6 +195,12 @@ export class Tracker {
       this.selectedGen = region.gen;
       this.sendChangeRegionMessage(region.id);
     }
+  }
+
+  public toggleLocationActive(location : LocationStatus, status : boolean) {
+    location.active = status;
+    this.sendChangeLocationActiveMessage(location.id, status);
+    this.sortLocationList();
   }
 
   public displayPokemonFn(pokemon: Pokemon): string {
@@ -419,7 +426,8 @@ export class Tracker {
   public saveSession() {
     const playerSession = JSON.stringify({
       regionId: this.regionFormControl.value?.id,
-      playerList: this.playerList
+      playerList: this.playerList,
+      activeLocations: this.locationList.filter(location => location.active).map(location => location.id)
     } as TrackSession);
 
     const blob = new Blob([playerSession], { type: 'application/json' });
@@ -497,8 +505,26 @@ export class Tracker {
           }
         }
 
+        if(typeof trackSession.activeLocations !== 'undefined' && trackSession.activeLocations.includes(location.id)){
+          location.active = true;
+        }
+
         this.pokemonControls[key] = control;
       });
+    });
+    this.sortLocationList();
+    this.cdr.detectChanges();
+  }
+
+  private sortLocationList() {
+    this.locationList.sort((a : LocationStatus, b : LocationStatus) => {
+      if(a.active && !b.active){
+        return -1;
+      }else if(!a.active && b.active){
+        return 1;
+      }else{
+        return a.id > b.id ? 1 : -1;
+      }
     });
     this.cdr.detectChanges();
   }
@@ -558,6 +584,12 @@ export class Tracker {
         if(typeof player !== 'undefined'){
           player.name = decodedMessage['playerName'];
         }
+        break;
+      case this.websocketMessageTypeChangeLocationActive:
+        this.locationList.filter(location => location.id === decodedMessage['locationId']).forEach(location => {
+          location.active = decodedMessage['active'];
+        });
+        this.sortLocationList();
         break;
       case this.websocketMessageTypeChangeRegion:
         this.locationList = this.locationListProvider.getLocationList(decodedMessage['regionId']).map( location => {
@@ -648,6 +680,16 @@ export class Tracker {
     this.sendWebsocketMessages(msg);
   }
 
+  public sendChangeLocationActiveMessage(id: number, active: boolean) {
+    let msg = {
+      'type': this.websocketMessageTypeChangeLocationActive,
+      'locationId': id,
+      'active': active
+    };
+    this.sendWebsocketMessages(msg);
+    this.sortLocationList();
+  }
+
   public sendRenamePlayerMessage(id: number, name :string) {
     let msg = {
       'type': this.websocketMessageTypeRenamePlayer,
@@ -727,5 +769,6 @@ export interface PokemonStatus {
 
 export interface TrackSession {
   regionId : number,
-  playerList : Array<Player>
+  playerList : Array<Player>,
+  activeLocations : Array<number>
 }
