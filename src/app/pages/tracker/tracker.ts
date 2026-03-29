@@ -570,6 +570,10 @@ export class Tracker {
         this.playerList.forEach(player => {
           player.pokemons = [];
         });
+        this.locationList.forEach(location => {
+          location.active = false;
+        });
+        this.sortLocationList();
         this.cdr.detectChanges();
         break;
       case this.websocketMessageTypeAddPlayer:
@@ -658,7 +662,8 @@ export class Tracker {
       'type': this.websocketMessageTypeLoadSession,
       'sessionDetails': JSON.stringify({
         regionId: this.regionFormControl.value?.id,
-        playerList: this.playerList
+        playerList: this.playerList,
+        activeLocations: this.locationList.filter(location => location.active).map(location => location.id)
       } as TrackSession)
     };
     this.sendWebsocketMessages(msg);
