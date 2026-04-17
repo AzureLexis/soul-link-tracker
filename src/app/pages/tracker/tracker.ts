@@ -99,14 +99,20 @@ export class Tracker {
   }
 
   private connectToWesbocket(uuid : string) {
-    this.websocketClient = new WebSocket('https://soul-link-tracker-websocket.onrender.com');
+    this.websocketClient = new WebSocket('wss://soul-link-tracker-websocket.onrender.com');
     setTimeout(() => {
       this.sendStartSessionMessage(uuid);
     }, 1000);
     
     this.websocketClient.onopen = () => {
       this.websocketConnected = true;
-      
+      this.websocketReconnecting = false;
+      this.attemptCounter = 1;
+      if(this.websocketIntervalId === 0){
+        this.websocketIntervalId = setInterval(() => {
+          this.sendWebsocketMessages({'type':'ping'});
+        }, 30000);
+      }
     }
     this.websocketClient.onmessage = (event : MessageEvent<string>) => {
       if(this.websocketReconnecting){
@@ -121,11 +127,7 @@ export class Tracker {
       this.websocketConnected = true;
       this.attemptCounter = 1;
       this.receiveWebsocketMessages(event.data);
-      if(this.websocketIntervalId === 0){
-        this.websocketIntervalId = setInterval(() => {
-          this.sendWebsocketMessages({'type':'ping'});
-        }, 30000);
-      }
+      
       this.cdr.detectChanges();
     }
     this.websocketClient.onerror = (e : any) => {
