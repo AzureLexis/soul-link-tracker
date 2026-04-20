@@ -230,18 +230,3 @@ div.mat-mdc-form-field-bottom-align {
     background-color: #0b1845;
     border-bottom: solid 3px #0eb825;    
 }
-
-.active-location {
-    position: sticky;
-    top: 0;
-}
-
-.active-location:nth-child(1) {
-    top: 0;
-}
-
-.overflow-container {
-    overflow: auto;
-    position: relative;
-    max-height:1500px;
-}
