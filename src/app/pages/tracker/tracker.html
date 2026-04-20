@@ -102,6 +102,13 @@
                         @else {
                             <mat-icon class="cursor-pointer" (click)="toggleLocationActive(location, true)" #tooltip="matTooltip" matTooltip="Inactive">computer</mat-icon>
                         }
+
+                        @if(location.hidden) {
+                            <mat-icon class="cursor-pointer margin-h-5" (click)="toggleLocationHidden(location, false)" #tooltip="matTooltip" matTooltip="Missed row">disabled_visible</mat-icon>
+                        }
+                        @else {
+                            <mat-icon class="cursor-pointer margin-h-5" (click)="toggleLocationHidden(location, true)" #tooltip="matTooltip" matTooltip="Normal row">visibility</mat-icon>
+                        }
                     </div>
                 </td>
                 @for (player of playerList; track player.id) {

@@ -54,6 +54,7 @@ export class Tracker {
   private websocketMessageTypeRenamePlayer = 'renamePlayer';
   private websocketMessageTypeChangeRegion = 'changeRegion';
   private websocketMessageTypeChangeLocationActive = 'changeLocationActive';
+  private websocketMessageTypeChangeLocationHidden = 'changeLocationHidden';
   private websocketMessageTypeCatchPokemon = 'catchPokemon';
   private websocketMessageTypechangePokemonStatus = 'changePokemonStatus';
   private websocketMessageTypePong = 'pong';
@@ -191,7 +192,8 @@ export class Tracker {
           'id': location.id,
           'name': location.name,
           'status': 'caught',
-          'active': false
+          'active': false,
+          'hidden': false
         } as LocationStatus
       });
       this.selectedGen = region.gen;
@@ -202,6 +204,12 @@ export class Tracker {
   public toggleLocationActive(location : LocationStatus, status : boolean) {
     location.active = status;
     this.sendChangeLocationActiveMessage(location.id, status);
+    this.sortLocationList();
+  }
+
+  public toggleLocationHidden(location : LocationStatus, status : boolean) {
+    location.hidden = status;
+    this.sendChangeLocationHiddenMessage(location.id, status);
     this.sortLocationList();
   }
 
@@ -358,9 +366,11 @@ export class Tracker {
       }
     });
 
+    let hiddenRow = this.locationList.find(location => location.id === id)?.hidden;
+
     if(hasFainted){
       resultClass = 'fainted-class';
-    }else if(hasMissed){
+    }else if(hasMissed || hiddenRow){
       resultClass = 'missed-class';
     }else if(caughtCounter === this.playerList.length && this.playerList.length>0){
       resultClass = 'caught-class';
@@ -494,7 +504,8 @@ export class Tracker {
           'id': location.id,
           'name': location.name,
           'status': 'caught',
-          'active': false
+          'active': false,
+          'hidden': false
         } as LocationStatus
       });
     }
@@ -602,13 +613,20 @@ export class Tracker {
         });
         this.sortLocationList();
         break;
+      case this.websocketMessageTypeChangeLocationHidden:
+        this.locationList.filter(location => location.id === decodedMessage['locationId']).forEach(location => {
+          location.hidden = decodedMessage['hidden'];
+        });
+        this.sortLocationList();
+        break;
       case this.websocketMessageTypeChangeRegion:
         this.locationList = this.locationListProvider.getLocationList(decodedMessage['regionId']).map( location => {
           return {
             'id': location.id,
             'name': location.name,
             'status': 'caught',
-            'active': false
+            'active': false,
+            'hidden': false
           } as LocationStatus
         });
         this.regionList.filter(region => region.id === decodedMessage['regionId']).forEach(region => {
@@ -702,6 +720,16 @@ export class Tracker {
     this.sortLocationList();
   }
 
+  public sendChangeLocationHiddenMessage(id: number, hidden: boolean) {
+    let msg = {
+      'type': this.websocketMessageTypeChangeLocationHidden,
+      'locationId': id,
+      'hidden': hidden
+    };
+    this.sendWebsocketMessages(msg);
+    this.sortLocationList();
+  }
+
   public sendRenamePlayerMessage(id: number, name :string) {
     let msg = {
       'type': this.websocketMessageTypeRenamePlayer,
@@ -770,6 +798,7 @@ export interface Player {
 
 export interface LocationStatus extends Location {
   status : 'not_visited' | 'caught' | 'lost';
+  hidden : boolean
   active : boolean
 }
 
