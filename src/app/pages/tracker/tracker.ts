@@ -71,7 +71,7 @@ export class Tracker {
   public selectedRegion = 1;
   public regionList : Array<RegionOption> = [];
   public regionFormControl : FormControl<RegionOption | null>;
-  public hideMissed : string= '1';
+  public hideRows : string = '0';
 
   private websocketIntervalId : number = 0;
   private websocketSessionId : string = '';
@@ -364,6 +364,8 @@ export class Tracker {
       resultClass = 'missed-class';
     }else if(caughtCounter === this.playerList.length && this.playerList.length>0){
       resultClass = 'caught-class';
+    }else{
+      resultClass = 'not-visited-class';
     }
     return resultClass;
   }
@@ -418,7 +420,10 @@ export class Tracker {
         this.playerList.forEach(player => {
           player.pokemons = [];
         });
-        
+        this.locationList.forEach(location => {
+          location.active = false;
+        });
+        this.sortLocationList();
         this.cdr.detectChanges();
         this.sendResetSessionMessage();
       }

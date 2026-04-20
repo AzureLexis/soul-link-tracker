@@ -12,11 +12,11 @@
         </div>
 
         <div class="pull-right padding-5">
-            Hide missed
             <mat-button-toggle-group name="fontStyle" aria-label="Font Style"
-            (change)="hideMissed = $event.value">
-                <mat-button-toggle [checked]="hideMissed === '1'" value="1">Yes</mat-button-toggle>
-                <mat-button-toggle [checked]="hideMissed === '0'" value="0">No</mat-button-toggle>
+            (change)="hideRows = $event.value">
+                <mat-button-toggle [checked]="hideRows === '2'" value="2">Show all</mat-button-toggle>
+                <mat-button-toggle [checked]="hideRows === '1'" value="1">Hide inactive</mat-button-toggle>
+                <mat-button-toggle [checked]="hideRows === '0'" value="0">Hide missed</mat-button-toggle>
             </mat-button-toggle-group>
             <button mat-raised-button class="margin-h-5 margin-t-5" (click)="openResetDialog()">
                 <mat-icon>refresh</mat-icon>
@@ -92,7 +92,7 @@
         </thead>
         <tbody>
         @for (location of locationList; track location.id) {
-            <tr class="{{hideMissed === '1' ? 'hide-missed': ''}} {{location.active ? 'active-location': ''}}">
+            <tr class="{{hideRows === '0' ? 'hide-missed': ''}} {{hideRows === '1' ? 'hide-inactive': ''}} {{location.active ? 'active-location': ''}}">
                 <td class="min-width-200 text-center {{getLocationClass(location.id)}}">
                     {{ location.name }}
                     <div>
