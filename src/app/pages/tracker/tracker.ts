@@ -497,6 +497,7 @@ export class Tracker {
     this.playerList = trackSession.playerList;
     const region = this.regionList.find(region => region.id === trackSession.regionId) || null;
     this.regionFormControl.setValue(region);
+    this.selectedGen = this.regionList.find(region => region.id === trackSession.regionId)?.gen || null;
 
     if(region !== null){
       this.locationList = this.locationListProvider.getLocationList(region.id).map( location => {
@@ -590,6 +591,7 @@ export class Tracker {
         });
         this.locationList.forEach(location => {
           location.active = false;
+          location.hidden = false;
         });
         this.sortLocationList();
         this.cdr.detectChanges();
