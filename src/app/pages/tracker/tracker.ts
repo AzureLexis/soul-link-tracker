@@ -444,7 +444,8 @@ export class Tracker {
     const playerSession = JSON.stringify({
       regionId: this.regionFormControl.value?.id,
       playerList: this.playerList,
-      activeLocations: this.locationList.filter(location => location.active).map(location => location.id)
+      activeLocations: this.locationList.filter(location => location.active).map(location => location.id),
+      hiddenLocations: this.locationList.filter(location => location.hidden).map(location => location.id),
     } as TrackSession);
 
     const blob = new Blob([playerSession], { type: 'application/json' });
@@ -526,6 +527,10 @@ export class Tracker {
 
         if(typeof trackSession.activeLocations !== 'undefined' && trackSession.activeLocations.includes(location.id)){
           location.active = true;
+        }
+
+        if(typeof trackSession.hiddenLocations !== 'undefined' && trackSession.hiddenLocations.includes(location.id)){
+          location.hidden = true;
         }
 
         this.pokemonControls[key] = control;
@@ -690,7 +695,8 @@ export class Tracker {
       'sessionDetails': JSON.stringify({
         regionId: this.regionFormControl.value?.id,
         playerList: this.playerList,
-        activeLocations: this.locationList.filter(location => location.active).map(location => location.id)
+        activeLocations: this.locationList.filter(location => location.active).map(location => location.id),
+        hiddenLocations: this.locationList.filter(location => location.hidden).map(location => location.id),
       } as TrackSession)
     };
     this.sendWebsocketMessages(msg);
@@ -814,4 +820,5 @@ export interface TrackSession {
   regionId : number,
   playerList : Array<Player>,
   activeLocations : Array<number>
+  hiddenLocations : Array<number>
 }
