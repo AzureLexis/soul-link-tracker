@@ -110,6 +110,22 @@
                             <mat-icon class="cursor-pointer margin-h-5" (click)="toggleLocationHidden(location, true)" #tooltip="matTooltip" matTooltip="Normal row">visibility</mat-icon>
                         }
                     </div>
+                    <div>
+                        @if(getLocationClass(location.id) === 'fainted-class') {
+                            <form class="pokemon-select">
+                                <mat-form-field>
+                                <mat-label>Defeated by</mat-label>
+                                <input class="min-width-300" type="text" matInput [formControl]="getLocationControl(location)" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayPokemonFn"
+                                (optionSelected)="onLocationDefeatSelected(location, $event.option.value)">
+                                    @for (option of getFilteredDefeatOptions(location) | async; track option.id) {
+                                    <mat-option [value]="option">{{option.name}}</mat-option>
+                                    }
+                                </mat-autocomplete>
+                                </mat-form-field>
+                            </form>
+                        }
+                    </div>
                 </td>
                 @for (player of playerList; track player.id) {
                     <td>

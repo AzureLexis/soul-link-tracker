@@ -56,6 +56,7 @@ export class Tracker {
   private websocketMessageTypeChangeLocationActive = 'changeLocationActive';
   private websocketMessageTypeChangeLocationHidden = 'changeLocationHidden';
   private websocketMessageTypeCatchPokemon = 'catchPokemon';
+  private websocketMessageTypeLocationDefeat = 'locationDefeat';
   private websocketMessageTypechangePokemonStatus = 'changePokemonStatus';
   private websocketMessageTypePong = 'pong';
 
@@ -69,6 +70,7 @@ export class Tracker {
   public readonly pokemonList : Array<Pokemon> = [];
   public playerList : Array<Player> = [];
   public pokemonControls: { [key: string]: FormControl<Pokemon | null> } = {};
+  public locationControls: { [key: string]: FormControl<Pokemon | null> } = {};
   public selectedRegion = 1;
   public regionList : Array<RegionOption> = [];
   public regionFormControl : FormControl<RegionOption | null>;
@@ -229,8 +231,20 @@ export class Tracker {
     return this.pokemonControls[key];
   }
 
+  public getLocationControl(location: Location): FormControl<Pokemon | null> {
+    const key = this.getLocationDefeatKey(location);
+    if (!this.locationControls[key]) {
+      this.locationControls[key] = new FormControl<Pokemon | null>(null);
+    }
+    return this.locationControls[key];
+  }
+
   public getCellKey(location: Location, player: Player): string {
     return `${location.id}-${player.id}`;
+  }
+
+  public getLocationDefeatKey(location: Location): string {
+    return `${location.id}-defeat`;
   }
 
   private _filterPokemon(name: string): Pokemon[] {
@@ -245,6 +259,20 @@ export class Tracker {
 
   public getFilteredPokemonOptions(location: Location, player: Player): Observable<Pokemon[]> {
     const control = this.getControl(location, player);
+    return control.valueChanges.pipe(
+      startWith(control.value),
+      map(value => {
+        if (!value) {
+          return this.pokemonList.slice(0,10);
+        }
+        const name = typeof value === 'string' ? value : value?.name;
+        return name ? this._filterPokemon(name as string) : this.pokemonList.slice();
+      })
+    );
+  }
+
+  public getFilteredDefeatOptions(location: Location): Observable<Pokemon[]> {
+    const control = this.getLocationControl(location);
     return control.valueChanges.pipe(
       startWith(control.value),
       map(value => {
@@ -326,6 +354,18 @@ export class Tracker {
       existingPokemon.pokemonId = newPokemon.id;
     }
     this.sendCatchPokemonMessage(player.id, newPokemon.id, location.id);
+  }
+
+  public onLocationDefeatSelected(location : Location, newPokemon : Pokemon ) {
+    let currentLocation = this.locationList.find( item => item.id === location.id);
+    if (currentLocation) {
+      const pokemon = this.pokemonList.find(pokemon => pokemon.id === newPokemon.id);
+      if(typeof pokemon !== 'undefined'){
+        currentLocation.defeatedBy = pokemon;
+      }
+      this.sendLocationDefeatPokemonMessage(newPokemon.id, location.id);
+    }
+    
   }
 
   public onPokemonStatusSelected(location : Location, player : Player, newStatus : 'none' |'missed' | 'caught' | 'fainted') {
@@ -441,11 +481,16 @@ export class Tracker {
   }
 
   public saveSession() {
+    let locationDefeats : Array<LocationDefeat> = [];
+    this.locationList.filter(location => typeof location.defeatedBy !== 'undefined').forEach( location => {
+      locationDefeats.push({'locationId' : location.id, 'pokemonId' : location.defeatedBy.id});
+    });
     const playerSession = JSON.stringify({
       regionId: this.regionFormControl.value?.id,
       playerList: this.playerList,
       activeLocations: this.locationList.filter(location => location.active).map(location => location.id),
       hiddenLocations: this.locationList.filter(location => location.hidden).map(location => location.id),
+      locationDefeats: locationDefeats
     } as TrackSession);
 
     const blob = new Blob([playerSession], { type: 'application/json' });
@@ -507,7 +552,7 @@ export class Tracker {
           'name': location.name,
           'status': 'caught',
           'active': false,
-          'hidden': false
+          'hidden': false,
         } as LocationStatus
       });
     }
@@ -524,6 +569,7 @@ export class Tracker {
             control.setValue(pokemon);
           }
         }
+        this.pokemonControls[key] = control;
 
         if(typeof trackSession.activeLocations !== 'undefined' && trackSession.activeLocations.includes(location.id)){
           location.active = true;
@@ -533,9 +579,25 @@ export class Tracker {
           location.hidden = true;
         }
 
-        this.pokemonControls[key] = control;
+        
       });
     });
+
+    if(typeof trackSession.locationDefeats !== 'undefined'){
+      trackSession.locationDefeats.forEach( locationDefeat => {
+        let location = this.locationList.find( item => item.id === locationDefeat.locationId);
+        if(typeof location !== 'undefined') {
+          let pokemon = this.pokemonList.find(pokemon => pokemon.id === locationDefeat.pokemonId);
+          if(typeof pokemon !== 'undefined'){
+            const control = new FormControl<Pokemon | null>(null);
+            control.setValue(pokemon);
+            this.locationControls[this.getLocationDefeatKey(location)] = control;
+            location.defeatedBy = pokemon;
+          }
+        }
+      });
+    }
+
     this.sortLocationList();
     this.cdr.detectChanges();
   }
@@ -657,6 +719,16 @@ export class Tracker {
           });
         }
         break;
+      case this.websocketMessageTypeLocationDefeat:
+        let location = this.locationList.find( item => item.id === decodedMessage['locationId']);
+        if (typeof location !== 'undefined') {
+          this.pokemonList.filter(pokemon => pokemon.id === decodedMessage['pokemonId']).forEach(pokemon => {
+            const control = this.getLocationControl(location);
+            control.setValue(pokemon);
+            location.defeatedBy = pokemon;
+          });
+        }
+        break;
       case this.websocketMessageTypechangePokemonStatus:
         const existingPokemon = player?.pokemons.find( pokemonCheck => pokemonCheck.locationId === decodedMessage['locationId']);
         if(typeof existingPokemon !== 'undefined' && typeof player !== 'undefined'){
@@ -690,6 +762,10 @@ export class Tracker {
   }
 
   public sendLoadSessionMessage() {
+    let locationDefeats : Array<LocationDefeat> = [];
+    this.locationList.filter(location => typeof location.defeatedBy !== 'undefined').forEach( location => {
+      locationDefeats.push({'locationId' : location.id, 'pokemonId' : location.defeatedBy.id});
+    });
     let msg = {
       'type': this.websocketMessageTypeLoadSession,
       'sessionDetails': JSON.stringify({
@@ -697,6 +773,7 @@ export class Tracker {
         playerList: this.playerList,
         activeLocations: this.locationList.filter(location => location.active).map(location => location.id),
         hiddenLocations: this.locationList.filter(location => location.hidden).map(location => location.id),
+        locationDefeats: locationDefeats
       } as TrackSession)
     };
     this.sendWebsocketMessages(msg);
@@ -773,6 +850,15 @@ export class Tracker {
     this.sendWebsocketMessages(msg);
   }
 
+  public sendLocationDefeatPokemonMessage(pokemonId :number, locationId: number) {
+    let msg = {
+      'type': this.websocketMessageTypeLocationDefeat,
+      'pokemonId': pokemonId,
+      'locationId': locationId
+    };
+    this.sendWebsocketMessages(msg);
+  }
+
   public sendChangePokemonStatusMessage(playerId: number, locationId: number, status: string) {
     let msg = {
       'type': this.websocketMessageTypechangePokemonStatus,
@@ -806,8 +892,9 @@ export interface Player {
 
 export interface LocationStatus extends Location {
   status : 'not_visited' | 'caught' | 'lost';
-  hidden : boolean
-  active : boolean
+  hidden : boolean;
+  active : boolean;
+  defeatedBy: Pokemon;
 }
 
 export interface PokemonStatus {
@@ -821,4 +908,10 @@ export interface TrackSession {
   playerList : Array<Player>,
   activeLocations : Array<number>
   hiddenLocations : Array<number>
+  locationDefeats : Array<LocationDefeat>
+}
+
+export interface LocationDefeat {
+  locationId : number;
+  pokemonId : number;
 }
