@@ -472,6 +472,16 @@ export class Tracker {
         });
         this.locationList.forEach(location => {
           location.active = false;
+          location.hidden = false;
+          location.defeatedBy = {
+            'id': 0,
+            'name': '',
+            'type': [],
+            'stats': {
+              'hp': 0,
+            }
+          } as Pokemon;
+          this.locationControls[this.getLocationDefeatKey(location)]?.setValue(null);
         });
         this.sortLocationList();
         this.cdr.detectChanges();
@@ -659,6 +669,15 @@ export class Tracker {
         this.locationList.forEach(location => {
           location.active = false;
           location.hidden = false;
+          location.defeatedBy = {
+            'id': 0,
+            'name': '',
+            'type': [],
+            'stats': {
+              'hp': 0,
+            }
+          } as Pokemon;
+          this.locationControls[this.getLocationDefeatKey(location)]?.setValue(null);
         });
         this.sortLocationList();
         this.cdr.detectChanges();
