@@ -6124,7 +6124,49 @@ export class PokemonListProvider {
       "name": "Calyrex",
       "type1": "Psychic",
       "type2": "Grass"
-    }
+    },
+    {
+      "id": 899,
+      "name": "Wyrdeer",
+      "type1": "Normal",
+      "type2": "Psychic"
+    },
+    {
+      "id": 900,
+      "name": "Kleavor",
+      "type1": "Bug",
+      "type2": "Rock"
+    },
+    {
+      "id": 901,
+      "name": "Ursaluna",
+      "type1": "Ground",
+      "type2": "Normal"
+    },
+    {
+      "id": 902,
+      "name": "Basculegion",
+      "type1": "Water",
+      "type2": "Ghost"
+    },
+    {
+      "id": 903,
+      "name": "Sneasler",
+      "type1": "Fighting",
+      "type2": "Poison"
+    },
+    {
+      "id": 904,
+      "name": "Overqwil",
+      "type1": "Dark",
+      "type2": "Poison"
+    },
+    {
+      "id": 905,
+      "name": "Enamorus",
+      "type1": "Fairy",
+      "type2": "Flying"
+    },
   ];
 
   public getPokemonList() : Array<Pokemon> {

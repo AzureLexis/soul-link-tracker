@@ -174,8 +174,14 @@ export class Tracker {
   public getPokemonMovesetUrl(location : Location, player : Player) : string {
     let result = '';
     let control = this.getControl(location, player);
-    if(typeof control !== undefined && typeof control.value !== 'undefined' && control.value !== null && typeof control.value.name !== 'undefined' && this.selectedGen !== null) {
-      result = this.movesUrl.replace('{gen}', this.selectedGen.toString()).replace('{id}', this.getCleanPokemonName(control.value.name.toString()));
+    if(typeof control !== undefined && typeof control.value !== 'undefined' && control.value !== null && this.selectedGen !== null) {
+      let urlName = '';
+      if(typeof control.value.name !== 'undefined'){
+        urlName = control.value.name;
+      }else if(typeof control.value.linkName !== 'undefined'){
+        urlName = control.value.linkName;
+      }
+      result = this.movesUrl.replace('{gen}', this.selectedGen.toString()).replace('{id}', this.getCleanPokemonName(urlName.toString()));
     }
     return result;
   }
