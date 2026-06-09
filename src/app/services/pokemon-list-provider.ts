@@ -25,6 +25,13 @@ export class PokemonListProvider {
       "type2": "Poison"
     },
     {
+      "id": 15003,
+      "name": "Mega Venusaur",
+      "linkName": "venusaur",
+      "type1": "Grass",
+      "type2": "Poison"
+    },
+    {
       "id": 4,
       "name": "Charmander",
       "type1": "Fire",
@@ -43,6 +50,20 @@ export class PokemonListProvider {
       "type2": "Flying"
     },
     {
+      "id": 15006,
+      "name": "Mega Charizard X",
+      "linkName": "charizard",
+      "type1": "Fire",
+      "type2": "Dragon"
+    },
+    {
+      "id": 16006,
+      "name": "Mega Charizard Y",
+      "linkName": "charizard",
+      "type1": "Fire",
+      "type2": "Flying"
+    },
+    {
       "id": 7,
       "name": "Squirtle",
       "type1": "Water",
@@ -57,6 +78,13 @@ export class PokemonListProvider {
     {
       "id": 9,
       "name": "Blastoise",
+      "type1": "Water",
+      "type2": ""
+    },
+    {
+      "id": 15009,
+      "name": "Mega Blastoise",
+      "linkName": "blastoise",
       "type1": "Water",
       "type2": ""
     },
@@ -97,6 +125,13 @@ export class PokemonListProvider {
       "type2": "Poison"
     },
     {
+      "id": 15015,
+      "name": "Mega Beedrill",
+      "linkName": "beedrill",
+      "type1": "Bug",
+      "type2": "Flying"
+    },
+    {
       "id": 16,
       "name": "Pidgey",
       "type1": "Normal",
@@ -111,6 +146,13 @@ export class PokemonListProvider {
     {
       "id": 18,
       "name": "Pidgeot",
+      "type1": "Normal",
+      "type2": "Flying"
+    },
+    {
+      "id": 15018,
+      "name": "Mega Pidgeot",
+      "linkName": "pidgeot",
       "type1": "Normal",
       "type2": "Flying"
     },
@@ -179,6 +221,20 @@ export class PokemonListProvider {
       "name": "Raichu (alolan)",
       "type1": "Electric",
       "type2": "Psychic"
+    },
+    {
+      "id": 15026,
+      "name": "Mega Raichu X",
+      "linkName": "raichu",
+      "type1": "Electric",
+      "type2": ""
+    },
+    {
+      "id": 16026,
+      "name": "Mega Raichu Y",
+      "linkName": "raichu",
+      "type1": "Electric",
+      "type2": ""
     },
     {
       "id": 27,
@@ -251,6 +307,13 @@ export class PokemonListProvider {
       "name": "Clefable",
       "type1": "Fairy",
       "type2": ""
+    },
+    {
+      "id": 15036,
+      "name": "Mega Clefable",
+      "linkName": "clefable",
+      "type1": "Fairy",
+      "type2": "Flying"
     },
     {
       "id": 37,
@@ -463,6 +526,13 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15065,
+      "name": "Mega Alakazam",
+      "linkName": "alakazam",
+      "type1": "Psychic",
+      "type2": ""
+    },
+    {
       "id": 66,
       "name": "Machop",
       "type1": "Fighting",
@@ -495,6 +565,13 @@ export class PokemonListProvider {
     {
       "id": 71,
       "name": "Victreebel",
+      "type1": "Grass",
+      "type2": "Poison"
+    },
+    {
+      "id": 15071,
+      "name": "Mega Victreebel",
+      "linkName": "victreebel",
       "type1": "Grass",
       "type2": "Poison"
     },
@@ -567,6 +644,13 @@ export class PokemonListProvider {
     {
       "id": 80,
       "name": "Slowbro",
+      "type1": "Water",
+      "type2": "Psychic"
+    },
+    {
+      "id": 15080,
+      "name": "Mega Slowbro",
+      "linkName": "slowbro",
       "type1": "Water",
       "type2": "Psychic"
     },
@@ -663,6 +747,13 @@ export class PokemonListProvider {
     {
       "id": 94,
       "name": "Gengar",
+      "type1": "Ghost",
+      "type2": "Poison"
+    },
+    {
+      "id": 15094,
+      "name": "Mega Gengar",
+      "linkName": "gengar",
       "type1": "Ghost",
       "type2": "Poison"
     },
@@ -805,6 +896,13 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15115,
+      "name": "Mega Kangaskhan",
+      "linkName": "kangaskhan",
+      "type1": "Normal",
+      "type2": ""
+    },
+    {
       "id": 116,
       "name": "Horsea",
       "type1": "Water",
@@ -837,6 +935,13 @@ export class PokemonListProvider {
     {
       "id": 121,
       "name": "Starmie",
+      "type1": "Water",
+      "type2": "Psychic"
+    },
+    {
+      "id": 15121,
+      "name": "Mega Starmie",
+      "linkName": "starmie",
       "type1": "Water",
       "type2": "Psychic"
     },
@@ -877,6 +982,13 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15127,
+      "name": "Mega Pinsir",
+      "linkName": "pinsir",
+      "type1": "Bug",
+      "type2": "Flying"
+    },
+    {
       "id": 128,
       "name": "Tauros",
       "type1": "Normal",
@@ -893,6 +1005,13 @@ export class PokemonListProvider {
       "name": "Gyarados",
       "type1": "Water",
       "type2": "Flying"
+    },
+    {
+      "id": 15130,
+      "name": "Mega Gyarados",
+      "linkName": "gyarados",
+      "type1": "Water",
+      "type2": "Dark"
     },
     {
       "id": 131,
@@ -967,6 +1086,13 @@ export class PokemonListProvider {
       "type2": "Flying"
     },
     {
+      "id": 15142,
+      "name": "Mega Aerodactyl",
+      "linkName": "aerodactyl",
+      "type1": "Rock",
+      "type2": "Flying"
+    },
+    {
       "id": 143,
       "name": "Snorlax",
       "type1": "Normal",
@@ -1009,8 +1135,29 @@ export class PokemonListProvider {
       "type2": "Flying"
     },
     {
+      "id": 15149,
+      "name": "Mega Dragonite",
+      "linkName": "dragonite",
+      "type1": "Dragon",
+      "type2": "Flying"
+    },
+    {
       "id": 150,
       "name": "Mewtwo",
+      "type1": "Psychic",
+      "type2": ""
+    },
+    {
+      "id": 15150,
+      "name": "Mewtwo X",
+      "linkName": "mewtwo",
+      "type1": "Psychic",
+      "type2": "Fighting"
+    },
+    {
+      "id": 16150,
+      "name": "Mewtwo Y",
+      "linkName": "mewtwo",
       "type1": "Psychic",
       "type2": ""
     },
@@ -1037,6 +1184,13 @@ export class PokemonListProvider {
       "name": "Meganium",
       "type1": "Grass",
       "type2": ""
+    },
+    {
+      "id": 15154,
+      "name": "Mega Meganium",
+      "linkName": "meganium",
+      "type1": "Grass",
+      "type2": "Fairy"
     },
     {
       "id": 155,
@@ -1073,6 +1227,13 @@ export class PokemonListProvider {
       "name": "Feraligatr",
       "type1": "Water",
       "type2": ""
+    },
+    {
+      "id": 15160,
+      "name": "Mega Feraligatr",
+      "linkName": "feraligatr",
+      "type1": "Water",
+      "type2": "Dragon"
     },
     {
       "id": 161,
@@ -1199,6 +1360,13 @@ export class PokemonListProvider {
       "name": "Ampharos",
       "type1": "Electric",
       "type2": ""
+    },
+    {
+      "id": 15181,
+      "name": "Mega Ampharos",
+      "linkName": "ampharos",
+      "type1": "Electric",
+      "type2": "Dragon"
     },
     {
       "id": 182,
@@ -1363,6 +1531,13 @@ export class PokemonListProvider {
       "type2": "Ground"
     },
     {
+      "id": 15208,
+      "name": "Mega Steelix",
+      "linkName": "steelix",
+      "type1": "Steel",
+      "type2": "Ground"
+    },
+    {
       "id": 209,
       "name": "Snubbull",
       "type1": "Fairy",
@@ -1387,6 +1562,13 @@ export class PokemonListProvider {
       "type2": "Steel"
     },
     {
+      "id": 15212,
+      "name": "Mega Scizor",
+      "linkName": "scizor",
+      "type1": "Bug",
+      "type2": "Steel"
+    },
+    {
       "id": 213,
       "name": "Shuckle",
       "type1": "Bug",
@@ -1395,6 +1577,13 @@ export class PokemonListProvider {
     {
       "id": 214,
       "name": "Heracross",
+      "type1": "Bug",
+      "type2": "Fighting"
+    },
+    {
+      "id": 15214,
+      "name": "Mega Heracross",
+      "linkName": "heracross",
       "type1": "Bug",
       "type2": "Fighting"
     },
@@ -1477,6 +1666,13 @@ export class PokemonListProvider {
       "type2": "Flying"
     },
     {
+      "id": 15227,
+      "name": "Mega Skarmory",
+      "linkName": "skarmory",
+      "type1": "Steel",
+      "type2": "Flying"
+    },
+    {
       "id": 228,
       "name": "Houndour",
       "type1": "Dark",
@@ -1485,6 +1681,13 @@ export class PokemonListProvider {
     {
       "id": 229,
       "name": "Houndoom",
+      "type1": "Dark",
+      "type2": "Fire"
+    },
+    {
+      "id": 15229,
+      "name": "Mega Houndoom",
+      "linkName": "houndoom",
       "type1": "Dark",
       "type2": "Fire"
     },
@@ -1603,6 +1806,13 @@ export class PokemonListProvider {
       "type2": "Dark"
     },
     {
+      "id": 15248,
+      "name": "Mega Tyranitar",
+      "linkName": "tyranitar",
+      "type1": "Rock",
+      "type2": "Dark"
+    },
+    {
       "id": 249,
       "name": "Lugia",
       "type1": "Psychic",
@@ -1639,6 +1849,13 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15254,
+      "name": "Mega Sceptile",
+      "linkName": "sceptile",
+      "type1": "Grass",
+      "type2": "Dragon"
+    },
+    {
       "id": 255,
       "name": "Torchic",
       "type1": "Fire",
@@ -1657,6 +1874,13 @@ export class PokemonListProvider {
       "type2": "Fighting"
     },
     {
+      "id": 15257,
+      "name": "Mega Blaziken",
+      "linkName": "blaziken",
+      "type1": "Fire",
+      "type2": "Fighting"
+    },
+    {
       "id": 258,
       "name": "Mudkip",
       "type1": "Water",
@@ -1671,6 +1895,13 @@ export class PokemonListProvider {
     {
       "id": 260,
       "name": "Swampert",
+      "type1": "Water",
+      "type2": "Ground"
+    },
+    {
+      "id": 15260,
+      "name": "Mega Swampert",
+      "linkName": "swampert",
       "type1": "Water",
       "type2": "Ground"
     },
@@ -1807,6 +2038,13 @@ export class PokemonListProvider {
       "type2": "Fairy"
     },
     {
+      "id": 15282,
+      "name": "Mega Gardevoir",
+      "linkName": "gardevoir",
+      "type1": "Psychic",
+      "type2": "Fairy"
+    },
+    {
       "id": 283,
       "name": "Surskit",
       "type1": "Bug",
@@ -1927,8 +2165,22 @@ export class PokemonListProvider {
       "type2": "Ghost"
     },
     {
+      "id": 15302,
+      "name": "Mega Sableye",
+      "linkName": "sableye",
+      "type1": "Dark",
+      "type2": "Ghost"
+    },
+    {
       "id": 303,
       "name": "Mawile",
+      "type1": "Steel",
+      "type2": "Fairy"
+    },
+    {
+      "id": 15303,
+      "name": "Mega Mawile",
+      "linkName": "mawile",
       "type1": "Steel",
       "type2": "Fairy"
     },
@@ -1951,6 +2203,13 @@ export class PokemonListProvider {
       "type2": "Rock"
     },
     {
+      "id": 15306,
+      "name": "Mega Aggron",
+      "linkName": "aggron",
+      "type1": "Steel",
+      "type2": ""
+    },
+    {
       "id": 307,
       "name": "Meditite",
       "type1": "Fighting",
@@ -1963,6 +2222,13 @@ export class PokemonListProvider {
       "type2": "Psychic"
     },
     {
+      "id": 15308,
+      "name": "Mega Medicham",
+      "linkName": "medicham",
+      "type1": "Fighting",
+      "type2": "Psychic"
+    },
+    {
       "id": 309,
       "name": "Electrike",
       "type1": "Electric",
@@ -1971,6 +2237,13 @@ export class PokemonListProvider {
     {
       "id": 310,
       "name": "Manectric",
+      "type1": "Electric",
+      "type2": ""
+    },
+    {
+      "id": 15310,
+      "name": "Mega Manectric",
+      "linkName": "manectric",
       "type1": "Electric",
       "type2": ""
     },
@@ -2029,6 +2302,13 @@ export class PokemonListProvider {
       "type2": "Dark"
     },
     {
+      "id": 15319,
+      "name": "Mega Sharpedo",
+      "linkName": "sharpedo",
+      "type1": "Water",
+      "type2": "Dark"
+    },
+    {
       "id": 320,
       "name": "Wailmer",
       "type1": "Water",
@@ -2049,6 +2329,13 @@ export class PokemonListProvider {
     {
       "id": 323,
       "name": "Camerupt",
+      "type1": "Fire",
+      "type2": "Ground"
+    },
+    {
+      "id": 15323,
+      "name": "Mega Camerupt",
+      "linkName": "camerupt",
       "type1": "Fire",
       "type2": "Ground"
     },
@@ -2117,6 +2404,13 @@ export class PokemonListProvider {
       "name": "Altaria",
       "type1": "Dragon",
       "type2": "Flying"
+    },
+    {
+      "id": 15334,
+      "name": "Mega Altaria",
+      "linkName": "altaria",
+      "type1": "Dragon",
+      "type2": "Fairy"
     },
     {
       "id": 335,
@@ -2239,6 +2533,13 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15354,
+      "name": "Mega Banette",
+      "linkName": "banette",
+      "type1": "Ghost",
+      "type2": ""
+    },
+    {
       "id": 355,
       "name": "Duskull",
       "type1": "Ghost",
@@ -2263,10 +2564,31 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15358,
+      "name": "Mega Chimecho",
+      "linkName": "chimecho",
+      "type1": "Psychic",
+      "type2": "Steel"
+    },
+    {
       "id": 359,
       "name": "Absol",
       "type1": "Dark",
       "type2": ""
+    },
+    {
+      "id": 15359,
+      "name": "Mega Absol",
+      "linkName": "absol",
+      "type1": "Dark",
+      "type2": ""
+    },
+    {
+      "id": 17359,
+      "name": "Mega Absol Z",
+      "linkName": "absol",
+      "type1": "Dark",
+      "type2": "Ghost"
     },
     {
       "id": 360,
@@ -2283,6 +2605,13 @@ export class PokemonListProvider {
     {
       "id": 362,
       "name": "Glalie",
+      "type1": "Ice",
+      "type2": ""
+    },
+    {
+      "id": 15362,
+      "name": "Mega Glalie",
+      "linkName": "glalie",
       "type1": "Ice",
       "type2": ""
     },
@@ -2353,6 +2682,13 @@ export class PokemonListProvider {
       "type2": "Flying"
     },
     {
+      "id": 15373,
+      "name": "Mega Salamence",
+      "linkName": "salamence",
+      "type1": "Dragon",
+      "type2": "Flying"
+    },
+    {
       "id": 374,
       "name": "Beldum",
       "type1": "Steel",
@@ -2367,6 +2703,13 @@ export class PokemonListProvider {
     {
       "id": 376,
       "name": "Metagross",
+      "type1": "Steel",
+      "type2": "Psychic"
+    },
+    {
+      "id": 15376,
+      "name": "Mega Metagross",
+      "linkName": "metagross",
       "type1": "Steel",
       "type2": "Psychic"
     },
@@ -2395,8 +2738,22 @@ export class PokemonListProvider {
       "type2": "Psychic"
     },
     {
+      "id": 15380,
+      "name": "Mega Latias",
+      "linkName": "latias",
+      "type1": "Dragon",
+      "type2": "Psychic"
+    },
+    {
       "id": 381,
       "name": "Latios",
+      "type1": "Dragon",
+      "type2": "Psychic"
+    },
+    {
+      "id": 15381,
+      "name": "Mega Latios",
+      "linkName": "latios",
       "type1": "Dragon",
       "type2": "Psychic"
     },
@@ -2407,14 +2764,35 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15382,
+      "name": "Primal Kyogre",
+      "linkName": "kyogre",
+      "type1": "Water",
+      "type2": ""
+    },
+    {
       "id": 383,
       "name": "Groudon",
       "type1": "Ground",
       "type2": ""
     },
     {
+      "id": 15383,
+      "name": "Primal Groudon",
+      "linkName": "groudon",
+      "type1": "Ground",
+      "type2": "Fire"
+    },
+    {
       "id": 384,
       "name": "Rayquaza",
+      "type1": "Dragon",
+      "type2": "Flying"
+    },
+    {
+      "id": 15384,
+      "name": "Mega Rayquaza",
+      "linkName": "rayquaza",
       "type1": "Dragon",
       "type2": "Flying"
     },
@@ -2500,6 +2878,13 @@ export class PokemonListProvider {
       "id": 398,
       "name": "Staraptor",
       "type1": "Normal",
+      "type2": "Flying"
+    },
+    {
+      "id": 15398,
+      "name": "Mega Staraptor",
+      "linkName": "staraptor",
+      "type1": "Fighting",
       "type2": "Flying"
     },
     {
@@ -2683,6 +3068,13 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15428,
+      "name": "Mega Lopunny",
+      "linkName": "lopunny",
+      "type1": "Ice",
+      "type2": "Ghost"
+    },
+    {
       "id": 429,
       "name": "Mismagius",
       "type1": "Ghost",
@@ -2803,6 +3195,20 @@ export class PokemonListProvider {
       "type2": "Steel"
     },
     {
+      "id": 15448,
+      "name": "Mega Lucario",
+      "linkName": "lucario",
+      "type1": "Fighting",
+      "type2": "Steel"
+    },
+    {
+      "id": 17448,
+      "name": "Mega Lucario Z",
+      "linkName": "lucario",
+      "type1": "Fighting",
+      "type2": "Steel"
+    },
+    {
       "id": 449,
       "name": "Hippopotas",
       "type1": "Ground",
@@ -2871,6 +3277,13 @@ export class PokemonListProvider {
     {
       "id": 460,
       "name": "Abomasnow",
+      "type1": "Grass",
+      "type2": "Ice"
+    },
+    {
+      "id": 15460,
+      "name": "Mega Abomasnow",
+      "linkName": "abomasnow",
       "type1": "Grass",
       "type2": "Ice"
     },
@@ -2965,6 +3378,13 @@ export class PokemonListProvider {
       "type2": "Fighting"
     },
     {
+      "id": 15475,
+      "name": "Mega Gallade",
+      "linkName": "gallade",
+      "type1": "Psychic",
+      "type2": "Fighting"
+    },
+    {
       "id": 476,
       "name": "Probopass",
       "type1": "Rock",
@@ -2979,6 +3399,13 @@ export class PokemonListProvider {
     {
       "id": 478,
       "name": "Froslass",
+      "type1": "Ice",
+      "type2": "Ghost"
+    },
+    {
+      "id": 15478,
+      "name": "Mega Froslass",
+      "linkName": "froslass",
       "type1": "Ice",
       "type2": "Ghost"
     },
@@ -3025,6 +3452,13 @@ export class PokemonListProvider {
       "type2": "Steel"
     },
     {
+      "id": 15485,
+      "name": "Mega Heatran",
+      "linkName": "heatran",
+      "type1": "Fire",
+      "type2": "Steel"
+    },
+    {
       "id": 486,
       "name": "Regigigas",
       "type1": "Normal",
@@ -3057,6 +3491,13 @@ export class PokemonListProvider {
     {
       "id": 491,
       "name": "Darkrai",
+      "type1": "Dark",
+      "type2": ""
+    },
+    {
+      "id": 15491,
+      "name": "Mega Darkrai",
+      "linkName": "darkrai",
       "type1": "Dark",
       "type2": ""
     },
@@ -3111,6 +3552,13 @@ export class PokemonListProvider {
     {
       "id": 500,
       "name": "Emboar",
+      "type1": "Fire",
+      "type2": "Fighting"
+    },
+    {
+      "id": 15500,
+      "name": "Mega Emboar",
+      "linkName": "emboar",
       "type1": "Fire",
       "type2": "Fighting"
     },
@@ -3295,10 +3743,24 @@ export class PokemonListProvider {
       "type2": "Steel"
     },
     {
+      "id": 15530,
+      "name": "Mega Excadrill",
+      "linkName": "excadrill",
+      "type1": "Ground",
+      "type2": "Steel"
+    },
+    {
       "id": 531,
       "name": "Audino",
       "type1": "Normal",
       "type2": ""
+    },
+    {
+      "id": 15531,
+      "name": "Mega Audino",
+      "linkName": "audino",
+      "type1": "Normal",
+      "type2": "Fairy"
     },
     {
       "id": 532,
@@ -3381,6 +3843,13 @@ export class PokemonListProvider {
     {
       "id": 545,
       "name": "Scolipede",
+      "type1": "Bug",
+      "type2": "Poison"
+    },
+    {
+      "id": 15454,
+      "name": "Mega Scolipede",
+      "linkName": "scolipede",
       "type1": "Bug",
       "type2": "Poison"
     },
@@ -3473,6 +3942,13 @@ export class PokemonListProvider {
       "name": "Scrafty",
       "type1": "Dark",
       "type2": "Fighting"
+    },
+    {
+      "id": 15560,
+      "name": "Mega Scrafty",
+      "linkName": "scrafty",
+      "type1": "Ice",
+      "type2": "Ghost"
     },
     {
       "id": 561,
@@ -3739,6 +4215,13 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15604,
+      "name": "Mega Elektross",
+      "linkName": "elektross",
+      "type1": "Ice",
+      "type2": "Ghost"
+    },
+    {
       "id": 605,
       "name": "Elgyem",
       "type1": "Psychic",
@@ -3767,6 +4250,13 @@ export class PokemonListProvider {
       "name": "Chandelure",
       "type1": "Ghost",
       "type2": "Fire"
+    },
+    {
+      "id": 15609,
+      "name": "Mega Chandelure",
+      "linkName": "chandelure",
+      "type1": "Fire",
+      "type2": "Ghost"
     },
     {
       "id": 610,
@@ -3849,6 +4339,13 @@ export class PokemonListProvider {
     {
       "id": 623,
       "name": "Golurk",
+      "type1": "Ground",
+      "type2": "Ghost"
+    },
+    {
+      "id": 15623,
+      "name": "Mega Golurk",
+      "linkName": "golurk",
       "type1": "Ground",
       "type2": "Ghost"
     },
@@ -4027,6 +4524,13 @@ export class PokemonListProvider {
       "type2": "Fighting"
     },
     {
+      "id": 15652,
+      "name": "Mega Chesnaught",
+      "linkName": "chesnaught",
+      "type1": "Grass",
+      "type2": "Fighting"
+    },
+    {
       "id": 653,
       "name": "Fennekin",
       "type1": "Fire",
@@ -4045,6 +4549,13 @@ export class PokemonListProvider {
       "type2": "Psychic"
     },
     {
+      "id": 15655,
+      "name": "Mega Delphox",
+      "linkName": "delphox",
+      "type1": "Fire",
+      "type2": "Psychic"
+    },
+    {
       "id": 656,
       "name": "Froakie",
       "type1": "Water",
@@ -4059,6 +4570,13 @@ export class PokemonListProvider {
     {
       "id": 658,
       "name": "Greninja",
+      "type1": "Water",
+      "type2": "Dark"
+    },
+    {
+      "id": 15658,
+      "name": "Mega Greninja",
+      "linkName": "greninja",
       "type1": "Water",
       "type2": "Dark"
     },
@@ -4123,6 +4641,13 @@ export class PokemonListProvider {
       "type2": "Normal"
     },
     {
+      "id": 15668,
+      "name": "Mega Pyroar",
+      "linkName": "pyroar",
+      "type1": "Fire",
+      "type2": "Fighting"
+    },
+    {
       "id": 669,
       "name": "Flabebe",
       "type1": "Fairy",
@@ -4131,6 +4656,13 @@ export class PokemonListProvider {
     {
       "id": 670,
       "name": "Floette",
+      "type1": "Fairy",
+      "type2": ""
+    },
+    {
+      "id": 15670,
+      "name": "Mega Floette",
+      "linkName": "floette",
       "type1": "Fairy",
       "type2": ""
     },
@@ -4179,6 +4711,13 @@ export class PokemonListProvider {
     {
       "id": 678,
       "name": "Meowstic",
+      "type1": "Psychic",
+      "type2": ""
+    },
+    {
+      "id": 15678,
+      "name": "Mega Meowstic",
+      "linkName": "meowstic",
       "type1": "Psychic",
       "type2": ""
     },
@@ -4237,6 +4776,13 @@ export class PokemonListProvider {
       "type2": "Psychic"
     },
     {
+      "id": 15687,
+      "name": "Mega Malamar",
+      "linkName": "malamar",
+      "type1": "Dark",
+      "type2": "Psychic"
+    },
+    {
       "id": 688,
       "name": "Binacle",
       "type1": "Rock",
@@ -4249,6 +4795,13 @@ export class PokemonListProvider {
       "type2": "Water"
     },
     {
+      "id": 15689,
+      "name": "Mega Barbaracle",
+      "linkName": "barbaracle",
+      "type1": "Rock",
+      "type2": "Fighting"
+    },
+    {
       "id": 690,
       "name": "Skrelp",
       "type1": "Poison",
@@ -4257,6 +4810,13 @@ export class PokemonListProvider {
     {
       "id": 691,
       "name": "Dragalge",
+      "type1": "Poison",
+      "type2": "Dragon"
+    },
+    {
+      "id": 15691,
+      "name": "Mega Dragalge",
+      "linkName": "dragalge",
       "type1": "Poison",
       "type2": "Dragon"
     },
@@ -4317,6 +4877,13 @@ export class PokemonListProvider {
     {
       "id": 701,
       "name": "Hawlucha",
+      "type1": "Fighting",
+      "type2": "Flying"
+    },
+    {
+      "id": 15701,
+      "name": "Mega Hawlucha",
+      "linkName": "hawlucha",
       "type1": "Fighting",
       "type2": "Flying"
     },
@@ -4423,8 +4990,22 @@ export class PokemonListProvider {
       "type2": "Ground"
     },
     {
+      "id": 15718,
+      "name": "Mega Zygarde",
+      "linkName": "zygarde",
+      "type1": "Dragon",
+      "type2": "Ground"
+    },
+    {
       "id": 719,
       "name": "Diancie",
+      "type1": "Rock",
+      "type2": "Fairy"
+    },
+    {
+      "id": 15719,
+      "name": "Mega Diancie",
+      "linkName": "diancie",
       "type1": "Rock",
       "type2": "Fairy"
     },
@@ -4551,6 +5132,13 @@ export class PokemonListProvider {
     {
       "id": 740,
       "name": "Crabominable",
+      "type1": "Fighting",
+      "type2": "Ice"
+    },
+    {
+      "id": 15740,
+      "name": "Mega Crabominable",
+      "linkName": "crabominable",
       "type1": "Fighting",
       "type2": "Ice"
     },
@@ -4723,6 +5311,13 @@ export class PokemonListProvider {
       "type2": "Water"
     },
     {
+      "id": 15768,
+      "name": "Mega Golisopod",
+      "linkName": "golisopod",
+      "type1": "Bug",
+      "type2": "Steel"
+    },
+    {
       "id": 769,
       "name": "Sandygast",
       "type1": "Ghost",
@@ -4791,6 +5386,13 @@ export class PokemonListProvider {
     {
       "id": 780,
       "name": "Drampa",
+      "type1": "Normal",
+      "type2": "Dragon"
+    },
+    {
+      "id": 15780,
+      "name": "Mega Drampa",
+      "linkName": "drampa",
       "type1": "Normal",
       "type2": "Dragon"
     },
@@ -4921,6 +5523,13 @@ export class PokemonListProvider {
       "type2": "Fairy"
     },
     {
+      "id": 15801,
+      "name": "Mega Magearna",
+      "linkName": "magearna",
+      "type1": "Steel",
+      "type2": "Fairy"
+    },
+    {
       "id": 802,
       "name": "Marshadow",
       "type1": "Fighting",
@@ -4953,6 +5562,13 @@ export class PokemonListProvider {
     {
       "id": 807,
       "name": "Zeraora",
+      "type1": "Electric",
+      "type2": ""
+    },
+    {
+      "id": 15807,
+      "name": "Mega Zeraora",
+      "linkName": "zeraora",
       "type1": "Electric",
       "type2": ""
     },
@@ -5335,6 +5951,13 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 15870,
+      "name": "Mega Falinks",
+      "linkName": "falinks",
+      "type1": "Fighting",
+      "type2": ""
+    },
+    {
       "id": 871,
       "name": "Pincurchin",
       "type1": "Electric",
@@ -5511,6 +6134,7 @@ export class PokemonListProvider {
 
 export interface Pokemon {
   id : number;
+  linkName ?: string;
   name : string;
   type1 ?: string;
   type2 ?: string;
