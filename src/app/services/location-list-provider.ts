@@ -370,6 +370,68 @@ export class LocationListProvider {
 
       ]
     },
+    { 
+      id: 5,
+      gen: 6,
+      name: 'X/Y',
+      locations: [
+        { id: 0, name: 'Starters' },
+        { id: 1, name: 'Route 2' },
+        { id: 2, name: 'Santalune Forest' },
+        { id: 3, name: 'Route 3' },
+        { id: 4, name: 'Route 22' },
+        { id: 5, name: 'Route 4' },
+        { id: 6, name: 'Lumiose City' },
+        { id: 7, name: 'Route 5' },
+        { id: 8, name: 'Route 6' },
+        { id: 9, name: 'Parfum Palace' },
+        { id: 10, name: 'Route 7' },
+        { id: 11, name: 'Connecting Cave' },
+        { id: 12, name: 'Route 8' },
+        { id: 13, name: 'Ambrette Town' },
+        { id: 14, name: 'Route 9' },
+        { id: 15, name: 'Glittering Cave' },
+        { id: 16, name: 'Cyllage City' },
+        { id: 17, name: 'Route 10' },
+        { id: 18, name: 'Route 11' },
+        { id: 19, name: 'Reflection Cave' },
+        { id: 20, name: 'Shalour City' },
+        { id: 21, name: 'Tower of Mystery' },
+        { id: 22, name: 'Route 12' },
+        { id: 23, name: 'Azure Bay' },
+        { id: 24, name: 'Route 13' },
+        { id: 25, name: 'Route 14' },
+        { id: 26, name: 'Laverre City' },
+        { id: 27, name: 'Route 15' },
+        { id: 28, name: 'Lost Hotel' },
+        { id: 29, name: 'Route 16' },
+        { id: 30, name: 'Frost Cavern' },
+        { id: 31, name: 'Route 17' },
+        { id: 32, name: 'Team Flare Secret HQ' },
+        { id: 33, name: 'Route 18' },
+        { id: 34, name: 'Couriway Town' },
+        { id: 35, name: 'Route 19' },
+        { id: 36, name: 'Route 20' },
+        { id: 37, name: 'Pokémon Village' },
+        { id: 38, name: 'Route 21' },
+        { id: 39, name: 'Victory Road' },
+        { id: 40, name: 'Terminus Cave' },
+        { id: 41, name: 'Sea Spirit\'s Den' },
+
+
+
+        { id: 7001, name: 'Extra 1'},
+        { id: 7002, name: 'Extra 2'},
+        { id: 7003, name: 'Extra 3'},
+        { id: 7004, name: 'Extra 4'},
+        { id: 7005, name: 'Extra 5'},
+        { id: 7006, name: 'Extra 6'},
+        { id: 7007, name: 'Extra 7'},
+        { id: 7008, name: 'Extra 8'},
+        { id: 7009, name: 'Extra 9'},
+        { id: 7010, name: 'Extra 10'},
+      ]
+    }
   ];
 
   public getRegions() : Array<RegionOption> {

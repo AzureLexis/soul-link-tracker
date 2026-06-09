@@ -121,10 +121,22 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 8019,
+      "name": "Rattata (alolan)",
+      "type1": "Dark",
+      "type2": "Normal"
+    },
+    {
       "id": 20,
       "name": "Raticate",
       "type1": "Normal",
       "type2": ""
+    },
+    {
+      "id": 8020,
+      "name": "Raticate (alolan)",
+      "type1": "Dark",
+      "type2": "Normal"
     },
     {
       "id": 21,
@@ -163,16 +175,34 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 8026,
+      "name": "Raichu (alolan)",
+      "type1": "Electric",
+      "type2": "Psychic"
+    },
+    {
       "id": 27,
       "name": "Sandshrew",
       "type1": "Ground",
       "type2": ""
     },
     {
+      "id": 8027,
+      "name": "Sandshrew (alolan)",
+      "type1": "Ice",
+      "type2": "Steel"
+    },
+    {
       "id": 28,
       "name": "Sandslash",
       "type1": "Ground",
       "type2": ""
+    },
+    {
+      "id": 8028,
+      "name": "Sandslash (alolan)",
+      "type1": "Ice",
+      "type2": "Steel"
     },
     {
       "id": 29,
@@ -229,10 +259,22 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 8037,
+      "name": "Vulpix (alolan)",
+      "type1": "Ice",
+      "type2": ""
+    },
+    {
       "id": 38,
       "name": "Ninetales",
       "type1": "Fire",
       "type2": ""
+    },
+    {
+      "id": 8038,
+      "name": "Ninetales (alolan)",
+      "type1": "Ice",
+      "type2": "Fairy"
     },
     {
       "id": 39,
@@ -307,10 +349,22 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 8050,
+      "name": "Diglett (alolan)",
+      "type1": "Ground",
+      "type2": "Steel"
+    },
+    {
       "id": 51,
       "name": "Dugtrio",
       "type1": "Ground",
       "type2": ""
+    },
+    {
+      "id": 8051,
+      "name": "Dugtrio (alolan)",
+      "type1": "Ground",
+      "type2": "Steel"
     },
     {
       "id": 52,
@@ -319,9 +373,21 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 8052,
+      "name": "Meowth (alolan)",
+      "type1": "Dark",
+      "type2": ""
+    },
+    {
       "id": 53,
       "name": "Persian",
       "type1": "Normal",
+      "type2": ""
+    },
+    {
+      "id": 8053,
+      "name": "Persian (alolan)",
+      "type1": "Dark",
       "type2": ""
     },
     {
@@ -451,16 +517,34 @@ export class PokemonListProvider {
       "type2": "Ground"
     },
     {
+      "id": 8074,
+      "name": "Geodude (alolan)",
+      "type1": "Rock",
+      "type2": "Electric"
+    },
+    {
       "id": 75,
       "name": "Graveler",
       "type1": "Rock",
       "type2": "Ground"
     },
     {
+      "id": 8075,
+      "name": "Graveler (alolan)",
+      "type1": "Rock",
+      "type2": "Electric"
+    },
+    {
       "id": 76,
       "name": "Golem",
       "type1": "Rock",
       "type2": "Ground"
+    },
+    {
+      "id": 8076,
+      "name": "Golem (alolan)",
+      "type1": "Rock",
+      "type2": "Electric"
     },
     {
       "id": 77,
@@ -535,10 +619,22 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
+      "id": 8088,
+      "name": "Grimer (alolan)",
+      "type1": "Poison",
+      "type2": "Dark"
+    },
+    {
       "id": 89,
       "name": "Muk",
       "type1": "Poison",
       "type2": ""
+    },
+    {
+      "id": 8089,
+      "name": "Muk (alolan)",
+      "type1": "Poison",
+      "type2": "Dark"
     },
     {
       "id": 90,
@@ -625,6 +721,12 @@ export class PokemonListProvider {
       "type2": "Psychic"
     },
     {
+      "id": 8103,
+      "name": "Exeggutor (alolan)",
+      "type1": "Grass",
+      "type2": "Dragon"
+    },
+    {
       "id": 104,
       "name": "Cubone",
       "type1": "Ground",
@@ -635,6 +737,12 @@ export class PokemonListProvider {
       "name": "Marowak",
       "type1": "Ground",
       "type2": ""
+    },
+    {
+      "id": 8105,
+      "name": "Marowak (alolan)",
+      "type1": "Fire",
+      "type2": "Ghost"
     },
     {
       "id": 106,
