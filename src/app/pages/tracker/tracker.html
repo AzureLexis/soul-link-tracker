@@ -152,7 +152,16 @@
                                         </a>
                                         }
                                     </div>
-                                    <div class="width-85 inline-block">
+                                    
+                                    <div class="width-10 inline-block align-v-middle">
+                                        @if (hasEvolution(location, player)) {
+                                            <mat-icon #tooltip="matTooltip" matTooltip="Evolve" class="cursor-pointer" (click)="evolvePokemon(location, player)">
+                                                keyboard_double_arrow_up
+                                            </mat-icon>
+                                        }
+                                    </div>
+                                    
+                                    <div class="width-75 inline-block">
                                         <div class="half-width text-center inline-block type-{{getPokemonDetails(getPlayerMon(player, location).pokemonId).type1}}">
                                             {{ getPokemonDetails(getPlayerMon(player, location).pokemonId).type1 }} 
                                         </div>

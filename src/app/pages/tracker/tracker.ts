@@ -13,6 +13,7 @@ import { MatButtonModule, } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationDialog } from './confirmation-dialog';
+import { EvolutionDialog } from './evolution-dialog';
 import { SessionDialog } from './session-dialog';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -184,6 +185,55 @@ export class Tracker {
       result = this.movesUrl.replace('{gen}', this.selectedGen.toString()).replace('{id}', this.getCleanPokemonName(urlName.toString()));
     }
     return result;
+  }
+
+  public hasEvolution(location : Location, player : Player) : boolean {
+    let result = false;
+    let control = this.getControl(location, player);
+    if(typeof control !== undefined && typeof control.value !== 'undefined' && control.value !== null && typeof control.value.evolution !== 'undefined') {
+      result = true;
+    }
+    return result;
+  }
+
+  public evolvePokemon(location : Location, player : Player) : void {
+    let control = this.getControl(location, player);
+    if(typeof control !== undefined && typeof control.value !== 'undefined' && control.value !== null && typeof control.value.evolution !== 'undefined') {
+      if(control.value.evolution.length > 1){
+        const evolutionOptions = control.value.evolution
+          .map(evolutionId => this.pokemonList.find(pokemon => pokemon.id === evolutionId))
+          .filter((pokemon): pokemon is Pokemon => typeof pokemon !== 'undefined');
+
+        const dialogRef = this.dialog.open(EvolutionDialog, {
+          data: {
+            title: 'Choose evolution',
+            message: `How should ${control.value.name} evolve?`,
+            options: evolutionOptions,
+          },
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          if (typeof result === 'number') {
+            this.applyEvolution(location, player, result);
+          }
+        });
+      }else{
+        this.applyEvolution(location, player, control.value.evolution[0]);
+      }
+    }
+  }
+
+  private applyEvolution(location : Location, player : Player, evolvedPokemonId : number) : void {
+    const control = this.getControl(location, player);
+    const evolvedPokemon = this.pokemonList.find(pokemon => pokemon.id === evolvedPokemonId);
+    if(typeof evolvedPokemon !== 'undefined'){
+      control.setValue(evolvedPokemon);
+      let existingPokemon = player.pokemons.find(pokemonCheck => pokemonCheck.locationId === location.id);
+      if(typeof existingPokemon !== 'undefined'){
+        existingPokemon.pokemonId = evolvedPokemonId;
+        this.sendCatchPokemonMessage(player.id, evolvedPokemonId, location.id);
+      }
+    }
   }
 
   public getCleanPokemonName(name : string) : string {
