@@ -3837,30 +3837,35 @@ export class PokemonListProvider {
     {
       "id": 40479,
       "name": "Heat Rotom",
+      "linkName": "rotom",
       "type1": "Electric",
       "type2": "Fire"
     },
     {
       "id": 50479,
       "name": "Wash Rotom",
+      "linkName": "rotom",
       "type1": "Electric",
       "type2": "Water"
     },
     {
       "id": 60479,
       "name": "Frost Rotom",
+      "linkName": "rotom",
       "type1": "Electric",
       "type2": "Ice"
     },
     {
       "id": 70479,
       "name": "Fan Rotom",
+      "linkName": "rotom",
       "type1": "Electric",
       "type2": "Flying"
     },
     {
       "id": 80479,
       "name": "Mow Rotom",
+      "linkName": "rotom",
       "type1": "Electric",
       "type2": "Grass"
     },
