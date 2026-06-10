@@ -177,12 +177,15 @@ export class Tracker {
     let control = this.getControl(location, player);
     if(typeof control !== undefined && typeof control.value !== 'undefined' && control.value !== null && this.selectedGen !== null) {
       let urlName = '';
-      if(typeof control.value.name !== 'undefined'){
-        urlName = control.value.name;
-      }else if(typeof control.value.linkName !== 'undefined'){
+      if(typeof control.value.linkName !== 'undefined'){
         urlName = control.value.linkName;
+      }else if(typeof control.value.name !== 'undefined'){
+        urlName = control.value.name;
       }
-      result = this.movesUrl.replace('{gen}', this.selectedGen.toString()).replace('{id}', this.getCleanPokemonName(urlName.toString()));
+
+      if(urlName !== ''){
+        result = this.movesUrl.replace('{gen}', this.selectedGen.toString()).replace('{id}', this.getCleanPokemonName(urlName.toString()));
+      }
     }
     return result;
   }

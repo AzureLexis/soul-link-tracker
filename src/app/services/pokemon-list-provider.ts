@@ -178,6 +178,7 @@ export class PokemonListProvider {
     {
       "id": 8019,
       "name": "Rattata (alolan)",
+      "linkName":"rattata",
       "type1": "Dark",
       "type2": "Normal"
     },
@@ -191,6 +192,7 @@ export class PokemonListProvider {
     {
       "id": 8020,
       "name": "Raticate (alolan)",
+      "linkName":"raticate",
       "type1": "Dark",
       "type2": "Normal"
     },
@@ -236,6 +238,7 @@ export class PokemonListProvider {
     {
       "id": 8026,
       "name": "Raichu (alolan)",
+      "linkName":"raichu",
       "type1": "Electric",
       "type2": "Psychic"
     },
@@ -263,6 +266,7 @@ export class PokemonListProvider {
     {
       "id": 8027,
       "name": "Sandshrew (alolan)",
+      "linkName":"sandshrew",
       "type1": "Ice",
       "type2": "Steel",
       "evolution": [8028]
@@ -276,6 +280,7 @@ export class PokemonListProvider {
     {
       "id": 8028,
       "name": "Sandslash (alolan)",
+      "linkName":"sandslash",
       "type1": "Ice",
       "type2": "Steel"
     },
@@ -349,6 +354,7 @@ export class PokemonListProvider {
     {
       "id": 8037,
       "name": "Vulpix (alolan)",
+      "linkName":"vulpix",
       "type1": "Ice",
       "type2": "",
       "evolution": [8038]
@@ -362,6 +368,7 @@ export class PokemonListProvider {
     {
       "id": 8038,
       "name": "Ninetales (alolan)",
+      "linkName":"ninetales",
       "type1": "Ice",
       "type2": "Fairy"
     },
@@ -448,6 +455,7 @@ export class PokemonListProvider {
     {
       "id": 8050,
       "name": "Diglett (alolan)",
+      "linkName":"diglett",
       "type1": "Ground",
       "type2": "Steel",
       "evolution": [8051]
@@ -461,6 +469,7 @@ export class PokemonListProvider {
     {
       "id": 8051,
       "name": "Dugtrio (alolan)",
+      "linkName":"dugtrio",
       "type1": "Ground",
       "type2": "Steel"
     },
@@ -474,6 +483,7 @@ export class PokemonListProvider {
     {
       "id": 8052,
       "name": "Meowth (alolan)",
+      "linkName":"meowth",
       "type1": "Dark",
       "type2": "",
       "evolution": [8053]
@@ -495,6 +505,7 @@ export class PokemonListProvider {
     {
       "id": 8053,
       "name": "Persian (alolan)",
+      "linkName":"persian",
       "type1": "Dark",
       "type2": ""
     },
@@ -534,7 +545,7 @@ export class PokemonListProvider {
     {
       "id": 30058,
       "name": "Growlithe (hisuian)",
-      "linkName": "growlith",
+      "linkName": "growlithe",
       "type1": "Fire",
       "type2": "Rock",
       "evolution": [30059]
@@ -669,6 +680,7 @@ export class PokemonListProvider {
     {
       "id": 8074,
       "name": "Geodude (alolan)",
+      "linkName":"geodude",
       "type1": "Rock",
       "type2": "Electric",
       "evolution": [8075]
@@ -683,6 +695,7 @@ export class PokemonListProvider {
     {
       "id": 8075,
       "name": "Graveler (alolan)",
+      "linkName":"graveler",
       "type1": "Rock",
       "type2": "Electric",
       "evolution": [8076]
@@ -696,6 +709,7 @@ export class PokemonListProvider {
     {
       "id": 8076,
       "name": "Golem (alolan)",
+      "linkName":"golem",
       "type1": "Rock",
       "type2": "Electric"
     },
@@ -827,6 +841,7 @@ export class PokemonListProvider {
     {
       "id": 8088,
       "name": "Grimer (alolan)",
+      "linkName":"grimer",
       "type1": "Poison",
       "type2": "Dark",
       "evolution": [8089]
@@ -840,6 +855,7 @@ export class PokemonListProvider {
     {
       "id": 8089,
       "name": "Muk (alolan)",
+      "linkName":"muk",
       "type1": "Poison",
       "type2": "Dark"
     },
@@ -960,6 +976,7 @@ export class PokemonListProvider {
     {
       "id": 8103,
       "name": "Exeggutor (alolan)",
+      "linkName":"exeggutor",
       "type1": "Grass",
       "type2": "Dragon"
     },
@@ -979,6 +996,7 @@ export class PokemonListProvider {
     {
       "id": 8105,
       "name": "Marowak (alolan)",
+      "linkName":"marowak",
       "type1": "Fire",
       "type2": "Ghost"
     },
