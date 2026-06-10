@@ -2249,7 +2249,7 @@ export class PokemonListProvider {
       "type2": ""
     },
     {
-      "id": 20083,
+      "id": 20264,
       "name": "Linoone (galarian)",
       "linkName": "linoone",
       "type1": "Dark",
